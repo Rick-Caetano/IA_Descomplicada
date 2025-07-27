@@ -9,6 +9,6 @@
   "author": "Rick",
   "license": "ISC",
   "dependencies": {
-    "@google/genai": "^1.10.0"
+     "@google/generative-ai": "^0.5.0"
   }
 }
