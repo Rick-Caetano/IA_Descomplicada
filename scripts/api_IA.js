@@ -1,5 +1,23 @@
-document.getElementById("butao-enviar").addEventListener("click", async () => {
-    const input = document.getElementById("input-usuario");
+document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carregar
+
+  const input = document.getElementById("input-usuario");
+  const chatBox = document.getElementById("chat-box");
+
+  function adicionarMensagemTela(mensagem, estiloClasse) {
+    const elementoMensagem = document.createElement("div");
+    const paragrafo = document.createElement("p");
+
+    paragrafo.textContent = mensagem;
+
+    elementoMensagem.classList.add("mensagem", `${estiloClasse}-mensagem`);
+    elementoMensagem.appendChild(paragrafo);
+
+    chatBox.scrollTop = chatBox.scrollHeight; // Rola para o final do chat
+    
+  }
+
+  document.getElementById("butao-enviar").addEventListener("click", async () => { //começa a escutar o clique no botão
+    
     const prompt = input.value;
 
     if (!prompt.trim()) {
@@ -7,12 +25,12 @@ document.getElementById("butao-enviar").addEventListener("click", async () => {
       return;
     }
 
-    try{
+    try {
       const response = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
-    });
+      });
 
       if (!response.ok) {
         throw new Error("Erro na resposta da API: " + response.status);
@@ -21,8 +39,11 @@ document.getElementById("butao-enviar").addEventListener("click", async () => {
       const data = await response.json();
       console.log(data.text);
 
+      adicionarMensagemTela(prompt, "ia");
+
     } catch (error) {
       console.error("Erro ao enviar para a IA:", error.message);
       alert("Ocorreu um erro ao conversar com a IA. Verifique se a API está funcionando.");
     }
+  });
 });
