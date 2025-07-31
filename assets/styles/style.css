@@ -174,7 +174,7 @@ body {
 }
 
 /* Mensagem da IA */
-.ai-message {
+.mensagem_ia {
     background-color: #40414f;
     color: #ececf1;
     align-self: flex-start; /* Alinha à esquerda */

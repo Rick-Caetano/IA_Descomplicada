@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
     paragrafo.textContent = mensagem;
 
-    elementoMensagem.classList.add("mensagem", `${estiloClasse}-mensagem`);
+    elementoMensagem.classList.add("mensagem", `${estiloClasse}`);
     elementoMensagem.appendChild(paragrafo);
     chatBox.appendChild(elementoMensagem);
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       const data = await response.json();
       console.log(data.text);
 
-      adicionarMensagemTela(prompt, "ia");
+      adicionarMensagemTela(prompt, "mensagem_ia");
 
     } catch (error) {
       console.error("Erro ao enviar para a IA:", error.message);
