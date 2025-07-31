@@ -37,10 +37,19 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         throw new Error("Erro na resposta da API: " + response.status);
       }
 
-      const data = await response.json();
-      console.log(data.text);
+      let respostaGerada = await response.json();
+      respostaGerada = respostaGerada.text.trim(); // Remove espaços em branco no início e no final da resposta
 
-      adicionarMensagemTela(prompt, "mensagem_ia");
+      if (!respostaGerada || typeof respostaGerada !== "string") {
+        adicionarMensagemTela("Desculpe, Ocorreu um erro ao processar sua solicitação.", "mensagem_ia"); //colocar mensagem de erro na tela
+        throw new Error("Resposta inválida da API");
+        
+      }
+
+      console.log(respostaGerada);
+
+      adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
+      adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
 
     } catch (error) {
       console.error("Erro ao enviar para a IA:", error.message);
