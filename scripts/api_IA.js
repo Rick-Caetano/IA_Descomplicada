@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
     elementoMensagem.classList.add("mensagem", `${estiloClasse}-mensagem`);
     elementoMensagem.appendChild(paragrafo);
+    chatBox.appendChild(elementoMensagem);
 
     chatBox.scrollTop = chatBox.scrollHeight; // Rola para o final do chat
     
