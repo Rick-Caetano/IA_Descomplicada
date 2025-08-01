@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       let respostaGerada = await response.json();
       respostaGerada = respostaGerada.text.trim(); // Remove espaços em branco no início e no final da resposta
-
       if (!respostaGerada || typeof respostaGerada !== "string") {
         adicionarMensagemTela("Desculpe, Ocorreu um erro ao processar sua solicitação.", "mensagem_ia"); //colocar mensagem de erro na tela
         throw new Error("Resposta inválida da API");
@@ -49,6 +48,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       console.log(respostaGerada);
 
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Espera 1 segundo para simular processamento
       adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
 
     } catch (error) {
