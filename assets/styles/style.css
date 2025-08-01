@@ -183,6 +183,7 @@ body {
     font-size: 12px;
     padding-left: 15px;
     padding-right: 15px;
+    max-width: 65%;
 }
 
 .mensagem_usuario {
@@ -194,6 +195,7 @@ body {
     font-size: 12px;
     padding-left: 15px;
     padding-right: 15px;
+    max-width: 65%;
 }
 
 /* Mensagem do Usuário */
