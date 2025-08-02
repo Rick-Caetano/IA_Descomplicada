@@ -32,34 +32,34 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   function digitarTextoSimulado(elemento, texto, intervalo = 50) {
-    let i = 0;
+  let index = 0;
 
-    function limpaTexto(callback){
-      const textoAtual = elemento.textContent;
-      let i = textoAtual.length;
-      const apagar = setInterval(() => {
-        if (i > 0) {
-          elemento.textContent =  textoAtual.substring(0, --i);
-          i--;
-        } else {
-          clearInterval(apagar);
-          callback();
-        }
-      }, intervalo / 2);
-    }
+  function limpaTexto(callback) {
+    const textoAtual = elemento.textContent;
+    let i = textoAtual.length;
 
-    function escreveTexto() {
-      const escrever = setInterval(() => {
-        if (i < texto.length) {
-          elemento.textContent += texto.charAt(i++);
-        } else {
-          clearInterval(escrever);
-        }
-      }, intervalo);
-
-      limpaTexto(escreveTexto);
-    }
+    const apagar = setInterval(() => {
+      if (i > 0) {
+        elemento.textContent = textoAtual.substring(0, --i);
+      } else {
+        clearInterval(apagar);
+        callback(); // Chama a escrita após apagar tudo
+      }
+    }, intervalo / 2);
   }
+
+  function escreveTexto() {
+    const escrever = setInterval(() => {
+      if (index < texto.length) {
+        elemento.textContent += texto.charAt(index++);
+      } else {
+        clearInterval(escrever);
+      }
+    }, intervalo);
+  }
+
+  limpaTexto(escreveTexto); 
+}
 
   function trocaTextoDica() {
     const dica = document.getElementById("troca_dica");
