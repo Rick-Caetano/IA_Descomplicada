@@ -137,6 +137,11 @@ body {
     font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para dicas */
 }
 
+.cursor-piscando {
+  display: inline-block; /* Garante que ::after tenha espaço */
+  position: relative;
+}
+
 .cursor-piscando::after {
   content: "|"; /* Símbolo do cursor */
   margin-left: 4px;

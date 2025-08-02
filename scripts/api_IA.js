@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const input = document.getElementById("input-usuario");
   const chatBox = document.getElementById("chat-box");
 
+  var simulaDigitacao = false; // Variável para controlar o estado de digitação
+
   //Funções
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
@@ -32,43 +34,53 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   function digitarTextoSimulado(elemento, texto, intervalo = 50) {
-  let index = 0;
+    if (simulaDigitacao) return;
+    simulaDigitacao = true; // Define que a digitação está em andamento
+    
+    let index = 0;
 
-  function limpaTexto(callback) {
-    const textoAtual = elemento.textContent;
-    let i = textoAtual.length;
+    function limpaTexto(callback) {
+      const textoAtual = elemento.textContent;
+      let i = textoAtual.length;
 
-    const apagar = setInterval(() => {
-      if (i > 0) {
-        elemento.textContent = textoAtual.substring(0, --i);
-      } else {
-        clearInterval(apagar);
-        callback(); // Chama a escrita após apagar tudo
-      }
-    }, intervalo / 2);
+      const apagar = setInterval(() => {
+        if (i > 0) {
+          elemento.textContent = textoAtual.substring(0, --i);
+        } else {
+          clearInterval(apagar);
+          callback(); // Chama a escrita após apagar tudo
+        }
+      }, intervalo / 2);
+    }
+
+    function escreveTexto() {
+      const escrever = setInterval(() => {
+        if (index < texto.length) {
+          elemento.textContent += texto.charAt(index++);
+        } else {
+          clearInterval(escrever);
+          simulaDigitacao = false; // Define que a digitação terminou
+        }
+      }, intervalo);
+    }
+
+    limpaTexto(escreveTexto); 
   }
-
-  function escreveTexto() {
-    const escrever = setInterval(() => {
-      if (index < texto.length) {
-        elemento.textContent += texto.charAt(index++);
-      } else {
-        clearInterval(escrever);
-      }
-    }, intervalo);
-  }
-
-  limpaTexto(escreveTexto); 
-}
 
   function trocaTextoDica() {
     const dica = document.getElementById("troca_dica");
     const dicas = [
       "Me conte o que você pode fazer",
-      "Me explique o que é um algoritmo como se eu tivesse 10 anos",
-      "Quais são os benefícios de usar IA no dia a dia?",
-      "Como posso melhorar minha produtividade com IA?",
-      "O que é machine learning?"
+      "Me explique o contexto da seguinte frase: 'Exemplo de frase'",
+      "Gere questões de Matemática para me ajudar na prova do concurso 'nome do concurso'",
+      "Preciso de inspiração para um projeto de faculdade sobre 'tema do projeto'",
+      "Me ajude a criar programa de computador para fazer 'tarefa desejada'",
+      "Me ajude a escrever um e-mail 'finalidade do e-mail'",
+      "Me ajude a entender um conceito difícil sobre 'assunto desejado'",
+      "Deixe essas palavras mais formais: 'texto a ser formalizado'",
+      "Me ajude a criar um currículo para a vaga de 'nome da vaga'",
+      "Deixe esse texto toda maisculo: 'texto a ser deixado em maiúsculo'",
+      "Me mande links de sites que retorne uma imagem"
     ];
     const randomIndex = Math.floor(Math.random() * dicas.length);
     let novaDica = dicas[randomIndex];
