@@ -31,15 +31,16 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   document.getElementById("butao-enviar").addEventListener("click", async () => { //começa a escutar o clique no botão
-    
-    const prompt = input.value;
-
-    if (!prompt.trim()) {
-      console.error("Prompt is empty");
-      return;
-    }
-
     try {
+      const prompt = input.value;
+
+          if (!prompt.trim()) {
+            console.error("Prompt is empty");
+            return;
+          }
+
+      input.value = ""; // Limpa o campo de entrada após enviar a mensagem
+
       const response = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -55,15 +56,13 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       if (!respostaGerada || typeof respostaGerada !== "string") {
         adicionarMensagemTela("Desculpe, Ocorreu um erro ao processar sua solicitação.", "mensagem_ia"); //colocar mensagem de erro na tela
         throw new Error("Resposta inválida da API");
-        
       }
 
       console.log(respostaGerada);
 
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
-      input.value = ""; // Limpa o campo de entrada após enviar a mensagem
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
-      await new Promise(resolve => setTimeout(resolve, 6000)); // Espera 6 segundos para simular processamento
+      await new Promise(resolve => setTimeout(resolve, 10000)); // Espera 6 segundos para simular processamento
       removerSpinner(); // Remove o spinner após a espera
       adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
 
