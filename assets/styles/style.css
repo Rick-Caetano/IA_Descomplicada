@@ -131,15 +131,20 @@ body {
     animation: spin 1s linear infinite;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 .dicas {
     font-size: 1.2rem;
     color: purple;
     font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para dicas */
-}
-
-.cursor-piscando {
-  display: inline-block; /* Garante que ::after tenha espaço */
-  position: relative;
 }
 
 .cursor-piscando::after {
