@@ -61,8 +61,9 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       console.log(respostaGerada);
 
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
+      input.value = ""; // Limpa o campo de entrada após enviar a mensagem
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Espera 2 segundos para simular processamento
+      await new Promise(resolve => setTimeout(resolve, 6000)); // Espera 6 segundos para simular processamento
       removerSpinner(); // Remove o spinner após a espera
       adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
 
@@ -71,6 +72,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       alert("Ocorreu um erro ao conversar com a IA. Verifique se a API está funcionando.");
     }
 
-    input.value = ""; // Limpa o campo de entrada após enviar a mensagem
+    
   });
 });
