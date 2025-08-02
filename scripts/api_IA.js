@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const input = document.getElementById("input-usuario");
   const chatBox = document.getElementById("chat-box");
 
+  //Funções
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
     const paragrafo = document.createElement("p");
@@ -30,7 +31,54 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     }
   }
 
-  document.getElementById("butao-enviar").addEventListener("click", async () => { //começa a escutar o clique no botão
+  function digitarTextoSimulado(elemento, texto, intervalo = 50) {
+    let i = 0;
+
+    function limpaTexto(callback){
+      const textoAtual = elemento.textContent;
+      let i = textoAtual.length;
+      const apagar = setInterval(() => {
+        if (i > 0) {
+          elemento.textContent =  textoAtual.substring(0, --i);
+          i--;
+        } else {
+          clearInterval(apagar);
+          callback();
+        }
+      }, intervalo / 2);
+    }
+
+    function escreveTexto() {
+      const escrever = setInterval(() => {
+        if (i < texto.length) {
+          elemento.textContent += texto.charAt(i++);
+        } else {
+          clearInterval(escrever);
+        }
+      }, intervalo);
+
+      limpaTexto(escreveTexto);
+    }
+  }
+
+  function trocaTextoDica() {
+    const dica = document.getElementById("troca_dica");
+    const dicas = [
+      "Me conte o que você pode fazer",
+      "Me explique o que é um algoritmo como se eu tivesse 10 anos",
+      "Quais são os benefícios de usar IA no dia a dia?",
+      "Como posso melhorar minha produtividade com IA?",
+      "O que é machine learning?"
+    ];
+    const randomIndex = Math.floor(Math.random() * dicas.length);
+    let novaDica = dicas[randomIndex];
+    digitarTextoSimulado(dica, novaDica);
+  }
+
+  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
+
+  //começa a escutar o clique no botão
+  document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
       const prompt = input.value;
 
