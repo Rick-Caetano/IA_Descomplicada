@@ -131,6 +131,25 @@ body {
     animation: spin 1s linear infinite;
 }
 
+.dicas {
+    font-size: 1.2rem;
+    color: purple;
+    font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para dicas */
+}
+
+.cursor-piscando::after {
+  content: "|"; /* Símbolo do cursor */
+  margin-left: 4px;
+  animation: blink 1s steps(1) infinite;
+  color: #333; /* Pode ajustar a cor se quiser */
+}
+
+/* Animação do cursor piscando */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
 .chat-container {
     display: flex;
     flex-direction: column;

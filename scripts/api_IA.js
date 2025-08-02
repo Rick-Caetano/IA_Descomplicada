@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     digitarTextoSimulado(dica, novaDica);
   }
 
-  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
+  setInterval(trocaTextoDica, 6000); // Troca a dica a cada 6 segundos;
 
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
