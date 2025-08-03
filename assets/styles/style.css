@@ -179,7 +179,16 @@ body {
     font-size: 1.5rem;
 }
 
+@media screen and (max-width: 600px) { /*diferença para celulares*/
+    .chat-container .subtitle {
+        height: 100px;
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
+}
+
 .chat-container .subtitle {
+    height: 200px; 
     font-size: 1rem;
     color: #bdc1c6;
     text-align: center;
