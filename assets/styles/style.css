@@ -181,7 +181,7 @@ body {
 
 @media screen and (max-width: 600px) { /*diferença para celulares*/
     .chat-container .subtitle {
-        height: 100px;
+        height: 150px;
         font-size: 0.95rem;
         padding: 0 8px;
     }
@@ -315,6 +315,44 @@ body {
 @keyframes bounce {
     0%, 80%, 100% { transform: scale(0); }
     40% { transform: scale(1.0); }
+}
+
+/* ====================================================== */
+/*          ESTILOS PARA BLOCOS DE CÓDIGO (PRISM.JS)      */
+/* ====================================================== */
+
+/* Container do bloco de código */
+.bloco-de-codigo {
+    background-color: #1E1E1E; /* Um fundo um pouco mais escuro para destacar */
+    border-radius: 8px;
+    margin: 12px 0; /* Espaçamento vertical dentro do balão de mensagem */
+    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados ao conteúdo */
+    position: relative;
+}
+
+/* A tag <pre> que o Prism usa */
+.bloco-de-codigo pre {
+    margin: 0 !important; /* Remove qualquer margem padrão */
+    padding: 16px !important; /* Espaçamento interno */
+    border-radius: 0 !important;
+    background: none !important; /* Removemos o fundo do prism para usar o nosso */
+    white-space: pre-wrap;       /* Permite quebra de linha em texto longo */
+    word-wrap: break-word;       /* Garante que palavras longas quebrem */
+}
+
+/* Adicionar o nome da linguagem (ex: "python") no canto */
+.bloco-de-codigo::before {
+    content: attr(data-linguagem);
+    position: absolute;
+    top: 0;
+    right: 12px;
+    padding: 2px 8px;
+    border-bottom-left-radius: 6px;
+    background-color: #8ab4f8;
+    color: #202124;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* ============================================== */

@@ -8,15 +8,27 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   //Funções
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
-    const paragrafo = document.createElement("p");
-
-    paragrafo.textContent = mensagem;
 
     elementoMensagem.classList.add("mensagem", `${estiloClasse}`);
-    elementoMensagem.appendChild(paragrafo);
+    
+
+    if (estiloClasse === "mensagem_ia") {
+      const htmlFormatado = formatarScriptMensagem(mensagem); // Formata a mensagem se for da IA
+      elementoMensagem.innerHTML = htmlFormatado; // Usa innerHTML para renderizar o HTML formatado
+    } else {
+      const paragrafo = document.createElement("p");
+      paragrafo.textContent = mensagem;
+      elementoMensagem.appendChild(paragrafo);
+    }
+    
     chatBox.appendChild(elementoMensagem);
 
     chatBox.scrollTop = chatBox.scrollHeight; // Rola para o final do chat
+
+    // Se a mensagem for da IA, pedimos ao Prism para colorir o código!
+    if (tipo === 'mensagem_ia') {
+        Prism.highlightAll();
+    }
     
   }
 
@@ -85,6 +97,34 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     const randomIndex = Math.floor(Math.random() * dicas.length);
     let novaDica = dicas[randomIndex];
     digitarTextoSimulado(dica, novaDica);
+  }
+
+  function formatarScriptMensagem(texto) {
+    const regexCodigo =/```(\w+)?\n([\s\S]*?)```/g // Regex para detectar blocos de código
+
+    const textoFormatado = texto.replace(regexCodigo, (match, linguagem, codigo) => {
+      const nomeLinguagem = linguagem || "markup" // Se não houver linguagem, usa "markup"
+
+      const codigoFormatado = codigo.replace(/</g, "<").replace(/>/g, ">"); // Escapa os caracteres < e >
+
+      return `<div class="bloco-de-codigo"><pre><code class="language-${nomeLinguagem}">${codigoFormatado.trim()}</code></pre></div>`;
+    });
+
+    // Se não houver blocos de código, retorna o texto normal
+    if (!textoFormatado.includes('div class="bloco-de-codigo"')) {
+      return `<p>${texto}</p>`; 
+    }
+
+    //para texto misto, envolvemos o texto fora dos blocos em paragrafos
+    return textoFormatado.replace(/(^|<\/div>)([^<]*?)(<div class=|$)/g, (match, antes, textoSolto, depois) => {
+      const textoLimpo = textoSolto.trim();
+
+      if (textoLimpo) {
+        return `${antes}<p>${textoLimpo}</p>${depois}`; //retorna o texto misto
+      }
+
+      return `${antes}${depois}`; // Se não houver texto solto, apenas retorna o que estava antes e depois
+    });
   }
 
   setInterval(trocaTextoDica, 6000); // Troca a dica a cada 6 segundos;
