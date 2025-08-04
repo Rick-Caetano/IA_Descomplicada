@@ -140,7 +140,6 @@ body {
   }
 }
 
-
 .dicas {
     font-size: 1.2rem;
     color: purple;
@@ -181,6 +180,7 @@ body {
 
 @media screen and (max-width: 600px) { /*diferença para celulares*/
     .chat-container .subtitle {
+        background-color: red;
         height: 150px;
         font-size: 0.95rem;
         padding: 0 8px;
@@ -188,6 +188,7 @@ body {
 }
 
 .chat-container .subtitle {
+    background-color: red;
     height: 200px; 
     font-size: 1rem;
     color: #bdc1c6;
@@ -212,15 +213,12 @@ body {
     gap: 16px;
 }
 
-/* --- ESTILO DAS MENSAGENS (MANTENDO NOMES ORIGINAIS) --- */
-
 /* Mensagem da IA */
 .mensagem_ia {
     background-color: #3c4043;
     color: #e8eaed;
     align-self: flex-start;
     border-bottom-left-radius: 4px; /* O "rabicho" da mensagem */
-    /* Estilos de melhoria aplicados */
     padding: 12px 16px;
     border-radius: 20px;
     max-width: 80%;
@@ -228,7 +226,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* Adicionando o estilo para a tag <p> dentro das mensagens, que você já tinha */
 .mensagem_ia p, .mensagem_usuario p {
     margin: 0;
     white-space: pre-wrap;

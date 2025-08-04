@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     chatBox.scrollTop = chatBox.scrollHeight; // Rola para o final do chat
 
     // Se a mensagem for da IA, pedimos ao Prism para colorir o código!
-    if (tipo === 'mensagem_ia') {
+    if (estiloClasse === 'mensagem_ia') {
         Prism.highlightAll();
     }
     
