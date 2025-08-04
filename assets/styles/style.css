@@ -181,20 +181,22 @@ body {
 @media screen and (max-width: 600px) { /*diferença para celulares*/
     .chat-container .subtitle {
         background-color: red;
-        height: 150px;
+        height: 120px;
         font-size: 0.95rem;
         padding: 0 8px;
+        flex-wrap: nowrap;
     }
 }
 
 .chat-container .subtitle {
     background-color: red;
-    height: 200px; 
+    height: 120px; 
     font-size: 1rem;
     color: #bdc1c6;
     text-align: center;
     margin: 0 24px 24px 24px;
     line-height: 1.4;
+    flex-wrap: nowrap;
 }
 
 .dicas {
@@ -211,6 +213,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100%;
 }
 
 /* Mensagem da IA */
