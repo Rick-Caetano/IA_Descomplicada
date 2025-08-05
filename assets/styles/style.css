@@ -144,6 +144,7 @@ body {
     font-size: 1.2rem;
     color: purple;
     font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para dicas */
+    max-width: 120px;
 }
 
 .cursor-piscando::after {
@@ -195,6 +196,7 @@ body {
     margin: 0 24px 24px 24px;
     line-height: 1.4;
     flex-wrap: nowrap;
+    max-height: 120px; /* Limita a altura para evitar que o texto ultrapasse o container */
 }
 
 .dicas {
