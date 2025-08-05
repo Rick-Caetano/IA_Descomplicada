@@ -162,8 +162,8 @@ body {
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    height: 100dvh; 
+    height: 100svh; /* Usando a unidade svh para melhor compatibilidade em dispositivos móveis, ja considera o teclado e evita bugs */
+    height: calc(var(--vh, 1svh) * 100); /* Usa a variável CSS para altura da viewport, essa variavel é setada no JS ao carregar a pagina */
     width: 100%;
     background-color: #202124;
     box-shadow: none;

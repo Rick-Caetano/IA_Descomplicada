@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
   //Funções
+  const definirAlturaViewport = () => {  // Esta função define uma variável CSS (--vh) com a altura real da janela atual
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
 
@@ -83,16 +88,15 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     const dica = document.getElementById("troca_dica");
     const dicas = [
       "Me conte o que você pode fazer",
-      "Me explique o contexto da seguinte frase: 'Exemplo de frase'",
-      "Gere questões de Matemática para me ajudar na prova do concurso 'nome do concurso'",
-      "Preciso de inspiração para um projeto de faculdade sobre 'tema do projeto'",
-      "Me ajude a criar programa de computador para fazer 'tarefa desejada'",
-      "Me ajude a escrever um e-mail 'finalidade do e-mail'",
-      "Me ajude a entender um conceito difícil sobre 'assunto desejado'",
-      "Deixe essas palavras mais formais: 'texto a ser formalizado'",
-      "Me ajude a criar um currículo para a vaga de 'nome da vaga'",
-      "Deixe esse texto toda maisculo: 'texto a ser deixado em maiúsculo'",
-      "Me mande links de sites que retorne uma imagem"
+      "Me explique o contexto da seguinte frase ...",
+      "Gere questões de Matemática para me ajudar na prova do concurso",
+      "Preciso de inspiração para um projeto de faculdade sobre...",
+      "Me ajude a criar programa de computador para fazer ...",
+      "Me ajude a escrever um e-mail ...",
+      "Me ajude a entender um conceito difícil sobre ...",
+      "Deixe essas palavras mais formais: ...",
+      "Me ajude a criar um currículo para a vaga de ...",
+      "Deixe esse texto toda maisculo: 'texto a ser deixado em maiúsculo'"
     ];
     const randomIndex = Math.floor(Math.random() * dicas.length);
     let novaDica = dicas[randomIndex];
@@ -127,7 +131,9 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     });
   }
 
-  setInterval(trocaTextoDica, 6000); // Troca a dica a cada 6 segundos;
+  definirAlturaViewport(); 
+  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
+  document.addEventListener("resize", definirAlturaViewport); // Atualiza a altura da viewport ao redimensionar a janela (exemplo: virar tela)
 
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
