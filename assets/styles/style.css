@@ -434,7 +434,7 @@ body {
     font-weight: bold;
     background-color:#1f1f1f; /* Fundo preto para destacar o prompt */
     border-radius: 8px; /* Bordas arredondadas para suavizar o visual */
-    padding: 0.12rem; /* Espaçamento interno para destacar o texto */
+    padding: 15px; /* Espaçamento interno para destacar o texto */
 }
 
 .prompt-exemplo-titulo{
