@@ -432,7 +432,7 @@ body {
     font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
     display: block; /* Garante que o prompt ocupe uma linha própria */
     font-weight: bold;
-    background-color: black; /* Fundo preto para destacar o prompt */
+    background-color:#1f1f1f; /* Fundo preto para destacar o prompt */
     border-radius: 8px; /* Bordas arredondadas para suavizar o visual */
     padding: 0.12rem; /* Espaçamento interno para destacar o texto */
 }
