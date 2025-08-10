@@ -435,11 +435,11 @@ body {
 }
 
 .prompt-exemplo-paragrafo{
-    color: var(--cor-acento);
+    color: var(--cor-primaria);
     font-weight: bold;
     background-color: black; /* Fundo preto para destacar o prompt */
-    border-radius: 2px; /* Bordas arredondadas para suavizar o visual */
-    padding: 0.2rem 0.4rem; /* Espaçamento interno para destacar o texto */
+    border-radius: 20%; /* Bordas arredondadas para suavizar o visual */
+    padding: 0.6rem 0.12rem; /* Espaçamento interno para destacar o texto */
 }
 
 /* Estilo para o aviso de saúde e a dica final */
