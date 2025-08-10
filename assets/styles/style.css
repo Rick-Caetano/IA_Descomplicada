@@ -425,15 +425,21 @@ body {
 }
 
 /* estiliza o parágrafo do prompt */
-.prompt-exemplo em {
+
+.prompt-exemplo em{
     color: var(--cor-acento); /* USA A COR DE DESTAQUE DO SITE */
-    background-color: black; /* Fundo preto para destacar o prompt */
-    border-radius: 2px; /* Bordas arredondadas para suavizar o visual */
-    padding: 0.2rem 0.4rem; /* Espaçamento interno para destacar o texto */
     font-family: 'Share Tech Mono', monospace; /* Usa a fonte monoespaçada para dar cara de instrução */
     font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
     display: block; /* Garante que o prompt ocupe uma linha própria */
     margin-top: 0.75rem; /* Adiciona um espaço acima do prompt */
+}
+
+.prompt-exemplo p{
+    color: var(--cor-acento);
+    font-weight: bold;
+    background-color: black; /* Fundo preto para destacar o prompt */
+    border-radius: 2px; /* Bordas arredondadas para suavizar o visual */
+    padding: 0.2rem 0.4rem; /* Espaçamento interno para destacar o texto */
 }
 
 /* Estilo para o aviso de saúde e a dica final */
