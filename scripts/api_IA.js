@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
   //Funções
+  input.addEventListener("focus", () => {
+    document.body.style.overflow = "hidden"; // trava a rolagem
+    chatBox.scrollTop = chatBox.scrollHeight; // força mostrar o fim do chat
+  });
+
+  input.addEventListener("blur", () => {
+    document.body.style.overflow = ""; // libera a rolagem de novo
+  });
    // --- VIEWPORT HEIGHT CORRECTION ---
   const setViewportHeight = () => {
     // Obtemos a altura interna da janela e calculamos 1% dela

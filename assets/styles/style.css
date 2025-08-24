@@ -210,13 +210,25 @@ section#chat-ia {
     font-size: 1.5rem;
 }
 
-@media screen and (max-width: 600px) { /*diferença para celulares*/
-    .chat-container .subtitle {
-        height: 120px;
-        font-size: 0.95rem;
-        padding: 0 8px;
-        flex-wrap: nowrap;
-    }
+@media screen and (max-width: 600px) {
+  #input-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px;
+    background-color: #202124;
+  }
+
+  .chat-container {
+    height: 100dvh; /* sempre ocupa a viewport inteira */
+    padding-bottom: 70px; /* espaço pro input fixo não cobrir o chat */
+  }
+
+  body {
+    overflow: hidden; /* trava a rolagem do body */
+  }
 }
 
 .chat-container .subtitle {
