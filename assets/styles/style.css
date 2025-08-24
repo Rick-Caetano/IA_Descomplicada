@@ -160,11 +160,26 @@ body {
   50.01%, 100% { opacity: 0; }
 }
 
+/*
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100svh; /* Usando a unidade svh para melhor compatibilidade em dispositivos móveis, ja considera o teclado e evita bugs */
-    height: calc(var(--vh, 1svh) * 100); /* Usa a variável CSS para altura da viewport, essa variavel é setada no JS ao carregar a pagina */
+    height: 100svh;  Usando a unidade svh para melhor compatibilidade em dispositivos móveis, ja considera o teclado e evita bugs
+    height: calc(var(--vh, 1svh) * 100); /* Usa a variável CSS para altura da viewport, essa variavel é setada no JS ao carregar a pagina 
+    width: 100%;
+    background-color: #202124;
+    box-shadow: none;
+    border-radius: 0;
+} */
+
+
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    /* REMOVA ESTAS DUAS LINHAS DE ALTURA: */
+    /* height: 100svh; */
+    /* height: calc(var(--vh, 1svh) * 100); */
     width: 100%;
     background-color: #202124;
     box-shadow: none;
@@ -549,4 +564,38 @@ pre, code {
     background-color: var(--cor-acento-hover);
     color: var(--cor-acento);
     border-color: var(--cor-acento);
+}
+
+/* ================================================== */
+/* CORREÇÃO DO BUG DO TECLADO VIRTUAL NA SEÇÃO DE CHAT */
+/* ================================================== */
+
+/* 1. Transforma a SECTION em um container flexível de tela cheia */
+section#chat-ia {
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna (h1 em cima, chat embaixo) */
+    text-align: center;
+    padding: 0; /* Remove padding para ocupar a tela toda */
+    
+    /* A mesma técnica de altura fixa que usamos antes, agora no container principal */
+    height: 100svh;
+    height: calc(var(--vh, 1svh) * 100);
+}
+
+/* 2. Estiliza o H1 dentro desta seção específica */
+section#chat-ia h1 {
+    color: var(--cor-primaria);
+    font-size: 1.5rem; /* Um pouco menor para caber bem */
+    padding: 24px 0 16px 0;
+    margin: 0;
+    background-color: #202124; /* Mesma cor do chat para consistência */
+}
+
+/* 3. Faz o chat-container crescer e ocupar todo o espaço RESTANTE */
+section#chat-ia .chat-container {
+    flex-grow: 1; /* ESSA É A PROPRIEDADE MÁGICA! */
+    min-height: 0; /* Correção de bug de flexbox em alguns navegadores */
+    width: 100%;
+    max-width: 100%; /* Sobrescreve o max-width do .container */
+    padding: 0; /* Remove o padding padrão do .container */
 }
