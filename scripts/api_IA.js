@@ -13,19 +13,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
   input.addEventListener("blur", () => {
     document.body.style.overflow = ""; // libera a rolagem de novo
-  });
-   // --- VIEWPORT HEIGHT CORRECTION ---
-  const setViewportHeight = () => {
-    // Obtemos a altura interna da janela e calculamos 1% dela
-    let vh = window.innerHeight * 0.01;
-    // nos setamos o valor na propriedade CSS --vh no root do documento
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-
-  setViewportHeight();
-
-  // Fica ouvindo o evento de redimensionamento
-  window.addEventListener('resize', setViewportHeight);
+  });  
 
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
