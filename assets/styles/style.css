@@ -25,6 +25,10 @@ body {
     font-size: 1.2rem;
     margin: 0;
     padding: 0;
+    
+    height: 100vh;
+    height: 100dvh; /*viewport height dinamica*/
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* ============================================== */
@@ -33,10 +37,13 @@ body {
 
 .full-page {
     min-height: 100vh;
+    min-height: 100dvh; /*viewport height dinamica*/
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%; 
 }
 
 .container {
@@ -140,6 +147,11 @@ body {
   }
 }
 
+section#chat-ia {
+    justify-content: flex-start; /* Align content to the top */
+    padding-top: 2rem; /* Add some space at the top */
+}
+
 .dicas {
     font-size: 1.2rem;
     color: purple;
@@ -177,13 +189,17 @@ body {
 .chat-container {
     display: flex;
     flex-direction: column;
-    /* REMOVA ESTAS DUAS LINHAS DE ALTURA: */
-    /* height: 100svh; */
-    /* height: calc(var(--vh, 1svh) * 100); */
     width: 100%;
+    max-width: 900px; /* Or whatever your max-width is */
     background-color: #202124;
-    box-shadow: none;
-    border-radius: 0;
+    border-radius: 12px; /* Re-add border-radius for a container look */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+
+    /* Crucial para dispositivos móveis */
+    /* Definimos uma altura fixa baseada na viewport *sem* o teclado */
+    height: 80vh; /* Define uma altura menor que a tela inteira */
+    height: calc(var(--vh, 1vh) * 80); /* Use a variavel no JS */
 }
 
 .chat-container h2 {
@@ -564,38 +580,4 @@ pre, code {
     background-color: var(--cor-acento-hover);
     color: var(--cor-acento);
     border-color: var(--cor-acento);
-}
-
-/* ================================================== */
-/* CORREÇÃO DO BUG DO TECLADO VIRTUAL NA SEÇÃO DE CHAT */
-/* ================================================== */
-
-/* 1. Transforma a SECTION em um container flexível de tela cheia */
-section#chat-ia {
-    display: flex;
-    flex-direction: column; /* Organiza os itens em coluna (h1 em cima, chat embaixo) */
-    text-align: center;
-    padding: 0; /* Remove padding para ocupar a tela toda */
-    
-    /* A mesma técnica de altura fixa que usamos antes, agora no container principal */
-    height: 100svh;
-    height: calc(var(--vh, 1svh) * 100);
-}
-
-/* 2. Estiliza o H1 dentro desta seção específica */
-section#chat-ia h1 {
-    color: var(--cor-primaria);
-    font-size: 1.5rem; /* Um pouco menor para caber bem */
-    padding: 24px 0 16px 0;
-    margin: 0;
-    background-color: #202124; /* Mesma cor do chat para consistência */
-}
-
-/* 3. Faz o chat-container crescer e ocupar todo o espaço RESTANTE */
-section#chat-ia .chat-container {
-    flex-grow: 1; /* ESSA É A PROPRIEDADE MÁGICA! */
-    min-height: 0; /* Correção de bug de flexbox em alguns navegadores */
-    width: 100%;
-    max-width: 100%; /* Sobrescreve o max-width do .container */
-    padding: 0; /* Remove o padding padrão do .container */
 }

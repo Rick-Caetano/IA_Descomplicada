@@ -6,12 +6,18 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
   //Funções
-   const definirAlturaViewport = () => {
+   // --- VIEWPORT HEIGHT CORRECTION ---
+  const setViewportHeight = () => {
+    // Obtemos a altura interna da janela e calculamos 1% dela
     let vh = window.innerHeight * 0.01;
+    // nos setamos o valor na propriedade CSS --vh no root do documento
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
-  definirAlturaViewport();
-  window.addEventListener('resize', definirAlturaViewport);
+
+  setViewportHeight();
+
+  // Fica ouvindo o evento de redimensionamento
+  window.addEventListener('resize', setViewportHeight);
 
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
