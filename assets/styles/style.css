@@ -190,16 +190,23 @@ section#chat-ia {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 900px; /* Or whatever your max-width is */
+    max-width: 900px;
     background-color: #202124;
-    border-radius: 12px; /* Re-add border-radius for a container look */
+    border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    overflow: hidden;
 
-    /* Crucial para dispositivos móveis */
-    /* Definimos uma altura fixa baseada na viewport *sem* o teclado */
-    height: 80vh; /* Define uma altura menor que a tela inteira */
-    height: calc(var(--vh, 1vh) * 80); /* Use a variavel no JS */
+    height: 100%;         /* ocupa a altura da section */
+    max-height: 100vh;    /* nunca maior que a tela */
+    overflow: hidden;     /* evita vazamentos */
+}
+
+#chat-box {
+    flex-grow: 1;
+    overflow-y: auto;     /* o scroll fica aqui dentro */
+    padding: 0 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .chat-container h2 {
@@ -211,23 +218,14 @@ section#chat-ia {
 }
 
 @media screen and (max-width: 600px) {
-  #input-area {
-    position: fixed;
+   section#chat-ia #input-area {
+    position: sticky;   /* fica preso no final do chat, não no body */
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
     padding: 10px;
     background-color: #202124;
-  }
-
-  .chat-container {
-    height: 100dvh; /* sempre ocupa a viewport inteira */
-    padding-bottom: 70px; /* espaço pro input fixo não cobrir o chat */
-  }
-
-  body {
-    overflow: hidden; /* trava a rolagem do body */
   }
 }
 
@@ -247,16 +245,6 @@ section#chat-ia {
     color: #8ab4f8;
     font-family: 'Share Tech Mono', monospace;
     font-weight: 600;
-}
-
-#chat-box {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 0 16px 16px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    height: 100%;
 }
 
 /* Mensagem da IA */
