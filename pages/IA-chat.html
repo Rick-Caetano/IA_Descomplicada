@@ -1,0 +1,42 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O title pode ser mais convidativo -->
+    <title>Desvendando a Inteligência Artificial</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- PRISM.JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body>
+
+<h1>5. Teste Prático: Converse com a IA</h1>
+    <section id="chat-ia" class="full-page">
+        
+        <div class="container chat-container">
+            <h2 style="font-size:  2rem;">Como posso ajudar?</h2>
+            <p class="subtitle">Faça uma pergunta como: <span id="troca_dica" class="dicas cursor-piscando">"Me conte o que você pode fazer"</span></p>
+
+            <!-- A conversa aparecerá aqui -->
+            <div id="chat-box">
+                <div class="mensagem_ia">
+                    <p>Olá! Estou pronto para conversar. O que você gostaria de saber?</p>
+            </div>
+        </div>
+
+        <div id="input-area">
+            <textarea id="input-usuario" placeholder="Pergunte alguma coisa..." rows="1"></textarea>
+            <button id="butao-enviar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <script src="../scripts/api_IA.js" type="module"></script>
+</body>
+</html>
