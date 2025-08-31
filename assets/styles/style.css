@@ -222,12 +222,8 @@ section#chat-ia {
   }
 
   .chat-container {
-    height: 100dvh; /* sempre ocupa a viewport inteira */
-    padding-bottom: 70px; /* espaço pro input fixo não cobrir o chat */
-  }
-
-  body {
-    overflow: hidden; /* trava a rolagem do body */
+    height: 100svh; 
+    padding-bottom: 70px; 
   }
 }
 
