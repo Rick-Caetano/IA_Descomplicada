@@ -31,6 +31,11 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+body.pagina-chat {
+    background-color: #202124; /* A cor de fundo do seu chat */
+    overflow: hidden; /* Garante que não haja scroll na página inteira */
+}
+
 /* ============================================== */
 /* ESTILOS DA PÁGINA PRINCIPAL (INDEX.HTML)       */
 /* ============================================== */
@@ -152,6 +157,13 @@ section#chat-ia {
     padding-top: 2rem; /* Add some space at the top */
 }
 
+body.pagina-chat section#chat-ia {
+    padding-top: 0;
+    height: 100vh; /* Ocupa a altura da tela */
+    height: 100dvh;
+    justify-content: initial; /* Reseta o alinhamento vertical */
+}
+
 .dicas {
     font-size: 1.2rem;
     color: purple;
@@ -200,6 +212,14 @@ section#chat-ia {
     overflow: hidden;     /* evita vazamentos */
 }
 
+/* ADICIONE ESTA REGRA LOGO ABAIXO */
+body.pagina-chat .chat-container {
+    max-width: none; /* Remove a largura máxima */
+    height: 100%;    /* Ocupa 100% da <section> pai */
+    border-radius: 0;
+    box-shadow: none;
+}```
+
 #chat-box {
     flex-grow: 1;
     overflow-y: auto;     /* o scroll fica aqui dentro */
@@ -207,6 +227,11 @@ section#chat-ia {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+/* ADICIONE ESTA REGRA LOGO ABAIXO */
+body.pagina-chat #chat-box {
+    padding: 16px; /* Adiciona padding no topo também */
 }
 
 .chat-container h2 {
@@ -238,6 +263,13 @@ section#chat-ia {
     line-height: 1.4;
     flex-wrap: nowrap;
     max-height: 120px; /* Limita a altura para evitar que o texto ultrapasse o container */
+}
+
+body.pagina-chat section#chat-ia {
+    padding-top: 0;
+    height: 100vh; /* Ocupa a altura da tela */
+    height: 100dvh;
+    justify-content: initial; /* Reseta o alinhamento vertical */
 }
 
 .dicas {
@@ -582,58 +614,3 @@ pre, code {
     border-color: var(--cor-acento);
 }
 
-/* ====================================================== */
-/*          ESTILOS PARA A PÁGINA DE CHAT DEDICADA        */
-/* ====================================================== */
-
-/* 1. Garante que o body da página de chat não tenha scroll extra */
-body:has(section#chat-ia .chat-container) {
-    overflow: hidden; /* Esconde qualquer barra de rolagem no body */
-}
-
-/* 2. O chat-container agora se torna o layout principal de tela cheia */
-section#chat-ia .chat-container {
-    display: flex;
-    flex-direction: column;
-    
-    /* A MÁGICA PARA OCUPAR A TELA INTEIRA SEM BUGS */
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh; /* A unidade mais moderna e confiável para isso */
-
-    /* Resetando estilos de container que não precisamos mais */
-    max-width: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    
-    background-color: #202124; /* A cor de fundo que você quer para a tela toda */
-}
-
-/* 3. Garante que a caixa de mensagens ocupe o espaço correto */
-section#chat-ia #chat-box {
-    flex-grow: 1;
-    min-height: 0; /* Correção de bug de flexbox */
-    padding: 16px; /* Adiciona um padding geral */
-}
-
-/* 4. A barra de input fica fixa no final da tela */
-section#chat-ia #input-area {
-    width: 100%;
-    /* Garante que o padding não adicione largura extra */
-    box-sizing: border-box; 
-}
-
-/* 5. Ajustes finos nos títulos e subtítulos para o novo layout */
-section#chat-ia h2 {
-    font-size: 1.8rem;
-    padding: 24px 16px 8px 16px;
-}
-
-section#chat-ia .subtitle {
-    font-size: 1rem;
-    height: auto; /* Remove a altura fixa */
-    max-height: none; /* Remove a altura máxima fixa */
-    margin-bottom: 16px;
-    padding: 0 16px;
-}
