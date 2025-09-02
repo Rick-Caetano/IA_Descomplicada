@@ -153,15 +153,8 @@ body.pagina-chat {
 }
 
 section#chat-ia {
-    justify-content: flex-start; /* Align content to the top */
-    padding-top: 2rem; /* Add some space at the top */
-}
-
-body.pagina-chat section#chat-ia {
-    padding-top: 0;
-    height: 100vh; /* Ocupa a altura da tela */
-    height: 100dvh;
-    justify-content: initial; /* Reseta o alinhamento vertical */
+    /* Esta seção se torna apenas um wrapper simples */
+    width: 100%;
 }
 
 .dicas {
@@ -196,29 +189,28 @@ body.pagina-chat section#chat-ia {
     border-radius: 0;
 } */
 
-
-
 .chat-container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 900px;
+    max-width: 900px; /* Mantido para a página index */
     background-color: #202124;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-
-    height: 100%;         /* ocupa a altura da section */
-    max-height: 100vh;    /* nunca maior que a tela */
-    overflow: hidden;     /* evita vazamentos */
+    overflow: hidden;
+    height: calc(var(--vh, 1vh) * 85); /* Altura na página index */
 }
 
-/* ADICIONE ESTA REGRA LOGO ABAIXO */
 body.pagina-chat .chat-container {
-    max-width: none; /* Remove a largura máxima */
-    height: 100%;    /* Ocupa 100% da <section> pai */
+    max-width: none;
     border-radius: 0;
     box-shadow: none;
-}```
+    
+    /* DEFINE A ALTURA PARA OCUPAR A TELA INTEIRA DE FORMA ROBUSTA */
+    height: 100vh;
+    height: 100dvh;
+    height: calc(var(--vh, 1dvh) * 100);
+}
 
 #chat-box {
     flex-grow: 1;
@@ -242,9 +234,10 @@ body.pagina-chat #chat-box {
     font-size: 1.5rem;
 }
 
+/*
 @media screen and (max-width: 600px) {
    section#chat-ia #input-area {
-    position: sticky;   /* fica preso no final do chat, não no body */
+    position: sticky; 
     bottom: 0;
     left: 0;
     right: 0;
@@ -252,7 +245,7 @@ body.pagina-chat #chat-box {
     padding: 10px;
     background-color: #202124;
   }
-}
+}*/
 
 .chat-container .subtitle {
     height: 120px; 
@@ -313,14 +306,13 @@ body.pagina-chat section#chat-ia {
     text-align: left;
 }
 
-
-/* Barra de digitação */
 #input-area {
     display: flex;
     padding: 12px;
     background-color: #202124;
     gap: 12px;
     align-items: center;
+    flex-shrink: 0; /* Impede que a barra de input encolha */
 }
 
 #input-usuario {
