@@ -160,7 +160,7 @@ section#chat-ia {
 section#chat-ia h2{
     font-size: 3.5rem;
     color: var(--cor-primaria);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .dicas {
@@ -182,18 +182,6 @@ section#chat-ia h2{
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
-
-/*
-.chat-container {
-    display: flex;
-    flex-direction: column;
-    height: 100svh;  Usando a unidade svh para melhor compatibilidade em dispositivos móveis, ja considera o teclado e evita bugs
-    height: calc(var(--vh, 1svh) * 100); /* Usa a variável CSS para altura da viewport, essa variavel é setada no JS ao carregar a pagina 
-    width: 100%;
-    background-color: #202124;
-    box-shadow: none;
-    border-radius: 0;
-} */
 
 .chat-container {
     display: flex;
@@ -378,6 +366,37 @@ body.pagina-chat section#chat-ia {
     0%, 80%, 100% { transform: scale(0); }
     40% { transform: scale(1.0); }
 }
+
+/* ====================================================== */
+/*          ESTILIZAÇÃO DA BARRA DE ROLAGEM (SCROLLBAR)   */
+/* ====================================================== */
+
+/* Para navegadores baseados em WebKit (Chrome, Safari, Edge, etc.) */
+#chat-box::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem. 8px é fino e moderno. */
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: #202124; /* Cor de fundo da "trilha", a mesma do fundo do chat para um visual integrado. */
+    border-radius: 10px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #4A4F54; /* Cor do "polegar" (a parte que você arrasta). Um cinza sutil. */
+    border-radius: 10px; /* Bordas arredondadas para combinar com o resto do layout. */
+    border: 2px solid #202124; /* Cria um efeito de "preenchimento", fazendo a barra parecer mais fina. */
+}
+
+#chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-secundaria); /* Ao passar o mouse, a barra fica mais clara para indicar interatividade. */
+}
+
+/* Para Firefox */
+#chat-box {
+  scrollbar-width: thin; /* Deixa a barra mais fina no Firefox. */
+  scrollbar-color: #4A4F54 #202124; /* Sintaxe: Cor do "polegar" e Cor da "trilha". */
+}
+
 
 /* ====================================================== */
 /*          ESTILOS PARA BLOCOS DE CÓDIGO (PRISM.JS)      */
