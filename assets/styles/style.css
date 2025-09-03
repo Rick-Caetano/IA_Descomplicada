@@ -157,6 +157,12 @@ section#chat-ia {
     width: 100%;
 }
 
+section#chat-ia h2{
+    font-size: 4.0rem;
+    color: var(--cor-primaria);
+    margin-bottom: 2rem;
+}
+
 .dicas {
     font-size: 1.2rem;
     color: purple;
@@ -221,7 +227,6 @@ body.pagina-chat .chat-container {
     gap: 16px;
 }
 
-/* ADICIONE ESTA REGRA LOGO ABAIXO */
 body.pagina-chat #chat-box {
     padding: 16px; /* Adiciona padding no topo também */
 }
