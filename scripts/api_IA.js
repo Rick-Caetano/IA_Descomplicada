@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
   const input = document.getElementById("input-usuario");
   const chatBox = document.getElementById("chat-box");
+  const dica = document.getElementById("troca_dica");
 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
   //Funções
+
   input.addEventListener("focus", () => {
     document.body.style.overflow = "hidden"; // trava a rolagem
     chatBox.scrollTop = chatBox.scrollHeight; // força mostrar o fim do chat
@@ -14,6 +16,11 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   input.addEventListener("blur", () => {
     document.body.style.overflow = ""; // libera a rolagem de novo
   });  
+
+  function definirAlturaViewport() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
@@ -89,7 +96,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   function trocaTextoDica() {
-    const dica = document.getElementById("troca_dica");
     const dicas = [
       "Me conte o que você pode fazer",
       "Me explique o contexto da seguinte frase ...",
@@ -135,10 +141,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     });
   }
 
-  definirAlturaViewport(); 
-  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
-  document.addEventListener("resize", definirAlturaViewport); // Atualiza a altura da viewport ao redimensionar a janela (exemplo: virar tela)
-
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
@@ -183,4 +185,9 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
     
   });
+
+  definirAlturaViewport(); 
+  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
+  document.addEventListener("resize", definirAlturaViewport); // Atualiza a altura da viewport ao redimensionar a janela (exemplo: virar tela)
+  
 });
