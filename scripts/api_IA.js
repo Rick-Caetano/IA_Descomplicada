@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const chatBox = document.getElementById("chat-box");
   const dica = document.getElementById("troca_dica");
   const cabeçalhoChat = document.getElementById("cabeçalho-chat");
+  const barraTopoChat = document.getElementById("barra-topo-chat");
 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
@@ -142,9 +143,13 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     });
   }
 
-  function escondeCabecalhoChat() {
-    if (cabeçalhoChat.style.display === "none") return; // Se já estiver escondido, não faz nada
-    cabeçalhoChat.style.display = "none"; 
+  function trocarCabecalho() {
+    // Se a barra de topo já estiver visível, não faz nada
+    if (!barraTopoChat.classList.contains("escondido")) return;
+
+    // Esconde o cabeçalho inicial e mostra a nova barra de topo
+    cabeçalhoChat.classList.add("escondido");
+    barraTopoChat.classList.remove("escondido");
   }
 
   //começa a escutar o clique no botão
@@ -178,7 +183,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       console.log(respostaGerada);
 
-      escondeCabecalhoChat(); // Esconde o cabeçalho do chat na primeira interação
+      trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
       await new Promise(resolve => setTimeout(resolve, 10000)); // Espera 6 segundos para simular processamento
