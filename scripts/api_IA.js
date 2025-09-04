@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const input = document.getElementById("input-usuario");
   const chatBox = document.getElementById("chat-box");
   const dica = document.getElementById("troca_dica");
+  const cabeçalhoChat = document.getElementById("cabeçalho-chat");
 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
@@ -141,6 +142,11 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     });
   }
 
+  function escondeCabecalhoChat() {
+    if (cabeçalhoChat.style.display === "none") return; // Se já estiver escondido, não faz nada
+    cabeçalhoChat.style.display = "none"; 
+  }
+
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
@@ -172,6 +178,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       console.log(respostaGerada);
 
+      escondeCabecalhoChat(); // Esconde o cabeçalho do chat na primeira interação
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
       await new Promise(resolve => setTimeout(resolve, 10000)); // Espera 6 segundos para simular processamento
@@ -189,5 +196,5 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   definirAlturaViewport(); 
   setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
   document.addEventListener("resize", definirAlturaViewport); // Atualiza a altura da viewport ao redimensionar a janela (exemplo: virar tela)
-  
+
 });

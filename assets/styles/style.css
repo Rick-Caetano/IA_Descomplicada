@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 :root {
-    /* NOVA PALETA DE CORES - Mais sóbria e profissional */
+    /* PALETA DE CORES - Mais sóbria e profissional */
     --cor-fundo: #0B192F;         /* Azul noturno */
     --cor-texto: #CCD6F6;         /* Cinza claro azulado */
     --cor-primaria: #FFFFFF;       /* Branco para destaque */
@@ -129,6 +129,32 @@ body.pagina-chat {
     text-shadow: none;
 }
 
+.btn-chat {
+    background-color: var(--cor-acento-hover);
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--cor-acento); /* Borda mais sutil */
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    color: var(--cor-acento);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-chat:hover {
+    background-color: var(--cor-acento); /* Efeito de hover mais suave */
+    color: var(--cor-fundo);
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--cor-acento); /* Borda mais sutil */
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
 /* ================================== */
 /*          ESTILOS DO CHAT IA        */
 /* ================================== */
@@ -219,13 +245,13 @@ body.pagina-chat #chat-box {
     padding: 16px; /* Adiciona padding no topo também */
 }
 
-.chat-container h2 {
+.chat-container h2{
     text-align: center;
     color: #e8eaed;
-    padding: 24px 20px 8px 20px;
+    padding: 24px 20px 0px 20px;
     margin: 0;
-    font-size: 1.5rem;
-}
+    font-size: 1.3rem;
+} 
 
 /*
 @media screen and (max-width: 600px) {
