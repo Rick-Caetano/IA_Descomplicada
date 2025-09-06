@@ -155,19 +155,26 @@ body.pagina-chat {
     transition: all 0.3s ease;
 }
 
-#barra-topo-chat {
+#master-container {
     display: flex;
-    align-items: center;
-    gap: 12px; /* Espaço entre a logo e o texto */
-    padding: 12px 16px;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    height: calc(var(--vh, 1dvh) * 100); /* Altura fixa e robusta */
     background-color: #202124;
-    border-bottom: 1px solid #3c4043; /* Linha sutil de separação */
-    flex-shrink: 0;
-    
-    /* Animação de entrada */
-    transition: opacity 0.5s ease, max-height 0.5s ease;
+    overflow: hidden; /* Garante que nada vaze */
+}
+
+#barra-topo-chat {
+     display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #3c4043;
+    flex-shrink: 0; /* Não encolhe */
+    transition: all 0.5s ease;
     opacity: 1;
-    max-height: 100px; /* Altura máxima para a animação */
+    max-height: 100px;
 }
 
 /* Estado inicial escondido */
@@ -176,8 +183,9 @@ body.pagina-chat {
     max-height: 0;
     padding-top: 0;
     padding-bottom: 0;
-    border-bottom: none;
+    border: none;
     overflow: hidden;
+
 }
 
 #barra-topo-chat .logo-chat {
@@ -203,6 +211,21 @@ body.pagina-chat {
     opacity: 0;
     max-height: 0;
     padding: 0;
+}
+
+#cabeçalho-chat h2 {
+    text-align: center;
+    color: #e8eaed;
+    margin: 0;
+    font-size: 2rem;
+}
+
+#cabeçalho-chat .subtitle {
+    font-size: 1rem;
+    color: #bdc1c6;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
 }
 
 /* ================================== */
@@ -285,13 +308,13 @@ body.pagina-chat .chat-container {
 }
 
 #chat-box {
-    flex-grow: 1;
-    overflow-y: auto;     /* o scroll fica aqui dentro */
-    padding: 0 16px 16px 16px;
+    flex-grow: 1; /* Ocupa todo o espaço restante */
+    overflow-y: auto; /* A rolagem acontece SÓ aqui */
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    min-height: 0; 
+    min-height: 0; /* A propriedade crucial para evitar o bug */
 }
 
 body.pagina-chat #chat-box {
@@ -381,10 +404,10 @@ body.pagina-chat section#chat-ia {
 #input-area {
     display: flex;
     padding: 12px;
-    background-color: #202124;
     gap: 12px;
     align-items: center;
-    flex-shrink: 0; /* Impede que a barra de input encolha */
+    flex-shrink: 0; /* Não encolhe */
+    border-top: 1px solid #3c4043;
 }
 
 #input-usuario {

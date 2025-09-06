@@ -15,13 +15,10 @@
 </head>
 <body class="pagina-chat">
 
-    <!-- A section agora serve apenas como um wrapper sem estilo -->
-    <section id="chat-ia">
-        
-        <!-- NOVA BARRA DE TOPO MINIMALISTA (COMEÇA ESCONDIDA) -->
+    <div id="master-container">
+
+        <!-- BARRA DE TOPO MINIMALISTA (agora dentro do master) -->
         <div id="barra-topo-chat" class="escondido">
-            <!-- Coloque sua logo aqui. Pode ser um SVG ou uma tag <img> -->
-            <!-- Exemplo com SVG simples. Substitua pelo seu! -->
             <svg class="logo-chat" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -30,28 +27,28 @@
             <span>Descomplicando IA - Powered by: Gemini</span>
         </div>
 
-        <!-- O chat-container agora é o elemento principal que ocupa a tela -->
-        <div class="chat-container">
-            <div id="cabeçalho-chat">
-                <h2>Como posso ajudar?</h2>
-                <p class="subtitle">Faça uma pergunta como: <span id="troca_dica" class="dicas cursor-piscando">"Me conte o que você pode fazer"</span></p>
-            </div>
+        <!-- CABEÇALHO INICIAL (agora dentro do master) -->
+        <div id="cabeçalho-chat">
+            <h2>Como posso ajudar?</h2>
+            <p class="subtitle">Faça uma pergunta como: <span id="troca_dica" class="dicas cursor-piscando">"Me conte o que você pode fazer"</span></p>
+        </div>
 
-            <div id="chat-box">
-                <div class="mensagem_ia">
-                    <p>Olá! Estou pronto para conversar. O que você gostaria de saber?</p>
-                </div>
-            </div>
-
-            <div id="input-area">
-                <textarea id="input-usuario" placeholder="Pergunte alguma coisa..." rows="1"></textarea>
-                <button id="butao-enviar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </button>
+        <!-- CORPO DO CHAT (agora dentro do master) -->
+        <div id="chat-box">
+            <div class="mensagem_ia">
+                <p>Olá! Estou pronto para conversar. O que você gostaria de saber?</p>
             </div>
         </div>
 
-    </section>
+        <!-- ÁREA DE INPUT (agora dentro do master) -->
+        <div id="input-area">
+            <textarea id="input-usuario" placeholder="Pergunte alguma coisa..." rows="1"></textarea>
+            <button id="butao-enviar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+
+    </div> <!-- Fim do master-container -->
 
     <script src="../scripts/api_IA.js" type="module"></script>
 </body>
