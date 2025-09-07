@@ -18,7 +18,7 @@
     <div id="master-container">
 
         <!-- BARRA DE TOPO MINIMALISTA (agora dentro do master) -->
-        <div id="barra-topo-chat" class="escondido">
+        <div id="barra-topo-chat" class="">
             <svg class="logo-chat" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -51,5 +51,19 @@
     </div> <!-- Fim do master-container -->
 
     <script src="../scripts/api_IA.js" type="module"></script>
+
+    <script>
+    // Ajusta a altura do master-container para nunca ultrapassar a viewport real
+    function ajustarAltura() {
+        const vh = window.innerHeight * 0.01; 
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Executa no carregamento
+    ajustarAltura();
+
+    // Recalcula sempre que a janela for redimensionada
+    window.addEventListener('resize', ajustarAltura);
+    </script>
 </body>
 </html>

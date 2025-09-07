@@ -158,11 +158,9 @@ body.pagina-chat {
 #master-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    height: 100dvh;
-    height: calc(var(--vh, 1dvh) * 100); /* Altura fixa e robusta */
+    height: calc(var(--vh, 1vh) * 100);
     background-color: #202124;
-    overflow: hidden; /* Garante que nada vaze */
+    overflow: hidden;
 }
 
 #barra-topo-chat {
@@ -308,13 +306,9 @@ body.pagina-chat .chat-container {
 }
 
 #chat-box {
-    flex-grow: 1; /* Ocupa todo o espaço restante */
-    overflow-y: auto; /* A rolagem acontece SÓ aqui */
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-height: 0; /* A propriedade crucial para evitar o bug */
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 body.pagina-chat #chat-box {
