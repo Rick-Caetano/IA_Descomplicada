@@ -373,6 +373,7 @@ body.pagina-chat section#chat-ia {
     line-height: 1.6;
     font-size: 1.1rem;
     text-align: left;
+    width: fit-content;
 }
 
 .mensagem_ia p, .mensagem_usuario p {
@@ -393,6 +394,13 @@ body.pagina-chat section#chat-ia {
     line-height: 1.6;
     font-size: 1.1rem;
     text-align: left;
+    width: fit-content;
+    /*
+        *   Se o texto for curto, `width: fit-content` fará o balão "encolher" para se ajustar ao texto.
+        *   Se o texto for longo, ele tentará se expandir. No entanto, a regra `max-width: 80%` atuará como um limite, forçando o texto a quebrar a linha e impedindo que o balão ocupe mais de 80% da largura do chat.
+
+        Com esta única adição, seus balões de mensagem ficarão perfeitos, se ajustando dinamicamente ao tamanho do texto e proporcionando o visual clássico e limpo de aplicativos de chat.
+    */
 }
 
 #input-area {
