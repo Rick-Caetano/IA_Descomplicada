@@ -19,11 +19,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     document.body.style.overflow = ""; // libera a rolagem de novo
   });  
 
-  function definirAlturaViewport() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
 
