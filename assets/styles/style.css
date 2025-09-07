@@ -362,7 +362,7 @@ body.pagina-chat section#chat-ia {
 }
 
 /* Mensagem da IA */
-.mensagem_ia {
+#chat-box > .mensagem_ia {
     background-color: #3c4043;
     color: #e8eaed;
     align-self: flex-start;
@@ -382,7 +382,7 @@ body.pagina-chat section#chat-ia {
 }
 
 /* Mensagem do Usuário */
-.mensagem_usuario {
+#chat-box > .mensagem_usuario {
     background-color: #8ab4f8;
     color: #202124; /* Texto escuro para legibilidade máxima */
     align-self: flex-end;
