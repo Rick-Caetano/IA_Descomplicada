@@ -306,14 +306,18 @@ body.pagina-chat .chat-container {
 }
 
 #chat-box {
-    flex-grow: 1;
+     flex-grow: 1;
     overflow-y: auto;
     min-height: 0;
+    
+    display: flex;
+    flex-direction: column;
+
+    /* Propriedades adicionais para um bom espaçamento */
+    padding: 16px;
+    gap: 16px; /* Espaço entre os balões de mensagem */
 }
 
-body.pagina-chat #chat-box {
-    padding: 16px; /* Adiciona padding no topo também */
-}
 
 .chat-container h2{
     text-align: center;
