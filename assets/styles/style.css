@@ -215,7 +215,8 @@ body.pagina-chat {
     text-align: center;
     color: #e8eaed;
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-top: 10px;
 }
 
 #cabeçalho-chat .subtitle {
