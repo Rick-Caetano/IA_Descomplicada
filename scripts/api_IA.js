@@ -178,16 +178,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       //console.log(respostaGerada); //debug
 
-      input.addEventListener("keydown", (evento) => {
-        // Verifica se a tecla pressionada foi "Enter" E se a tecla "Shift" NÃO foi pressionada
-        if (evento.key === "Enter" && !evento.shiftKey) {
-        evento.preventDefault(); // Impede que o "Enter" crie uma nova linha no textarea
-
-        // Simula um clique no botão de enviar, acionando toda a lógica do envio
-        document.getElementById("butao-enviar").click();
-        }
-      });
-
       trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
@@ -202,6 +192,16 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
     
   });
+
+  input.addEventListener("keydown", (evento) => {
+        // Verifica se a tecla pressionada foi "Enter" E se a tecla "Shift" NÃO foi pressionada
+        if (evento.key === "Enter" && !evento.shiftKey) {
+        evento.preventDefault(); // Impede que o "Enter" crie uma nova linha no textarea
+
+        // Simula um clique no botão de enviar, acionando toda a lógica do envio
+        document.getElementById("butao-enviar").click();
+        }
+      });
 
   setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
 
