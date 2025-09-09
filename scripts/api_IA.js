@@ -5,8 +5,11 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const dica = document.getElementById("troca_dica");
   const cabeçalhoChat = document.getElementById("cabeçalho-chat");
   const barraTopoChat = document.getElementById("barra-topo-chat");
+  const sections = document.querySelectorAll('.full-page');
 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
+  var IndexSectionAtual = 0;
+  var isScrolling = false; // Uma "trava" para impedir rolagens múltiplas
 
   //Funções
 
@@ -147,6 +150,23 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     barraTopoChat.classList.remove("escondido");
   }
 
+  function scrollEntreSections(index) {
+        // Verifica se o índice é válido e se já não estamos rolando
+        if (index >= 0 && index < sections.length && !isScrolling) {
+            isScrolling = true; // Ativa a trava
+            
+            const sectionAlvo = sections[index];
+            sectionAlvo.scrollIntoView({ behavior: 'smooth' });
+            IndexSectionAtual = index;
+
+            // Define um tempo de espera para a animação de rolagem terminar
+            // antes de permitir uma nova rolagem. 600ms é um bom valor.
+            setTimeout(() => {
+                isScrolling = false; // Libera a trava
+            }, 600); 
+        }
+    }
+
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
@@ -181,7 +201,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
       mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
-      await new Promise(resolve => setTimeout(resolve, 10000)); // Espera 6 segundos para simular processamento
+      await new Promise(resolve => setTimeout(resolve, 6000)); // Espera 6 segundos para simular processamento
       removerSpinner(); // Remove o spinner após a espera
       adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
 
@@ -203,6 +223,23 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         }
       });
 
-  setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
+  window.addEventListener('wheel', (evento) => {
+        // 'wheel' é o evento para a rodinha do mouse
+        
+        evento.preventDefault(); // Impede a rolagem padrão do navegador
+
+        if (!isScrolling) {
+            // evento.deltaY é positivo quando se rola para baixo, e negativo para cima
+            if (evento.deltaY > 0) {
+                // Rolou para baixo: vai para a próxima seção
+                scrollEntreSections(IndexSectionAtual + 1);
+            } else {
+                // Rolou para cima: vai para a seção anterior
+                scrollEntreSections(IndexSectionAtual - 1);
+            }
+        }
+    }, { passive: false }); // 'passive: false' é necessário para que o preventDefault() funcione
+
+  setInterval(trocaTextoDica, 7000); // Troca a dica a cada 10 segundos;
 
 });
