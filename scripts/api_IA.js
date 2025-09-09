@@ -176,7 +176,17 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         throw new Error("Resposta inválida da API");
       }
 
-      console.log(respostaGerada);
+      //console.log(respostaGerada); //debug
+
+      input.addEventListener("keydown", (evento) => {
+        // Verifica se a tecla pressionada foi "Enter" E se a tecla "Shift" NÃO foi pressionada
+        if (evento.key === "Enter" && !evento.shiftKey) {
+        evento.preventDefault(); // Impede que o "Enter" crie uma nova linha no textarea
+
+        // Simula um clique no botão de enviar, acionando toda a lógica do envio
+        document.getElementById("butao-enviar").click();
+        }
+      });
 
       trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
       adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
@@ -193,8 +203,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     
   });
 
-  definirAlturaViewport(); 
   setInterval(trocaTextoDica, 10000); // Troca a dica a cada 10 segundos;
-  document.addEventListener("resize", definirAlturaViewport); // Atualiza a altura da viewport ao redimensionar a janela (exemplo: virar tela)
 
 });
