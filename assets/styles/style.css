@@ -14,9 +14,10 @@
     --cor-acento-hover: rgba(100, 255, 218, 0.1); /* Fundo do botão no hover */
 }
 
+/*
 html {
     scroll-behavior: smooth;
-}
+}*/
 
 body {
     background-color: var(--cor-fundo);
@@ -27,13 +28,24 @@ body {
     padding: 0;
     
     height: 100vh;
-    height: 100dvh; /*viewport height dinamica*/
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow: hidden; /* IMPEDE A ROLAGEM NO BODY */
 }
 
 body.pagina-chat {
     background-color: #202124; /* A cor de fundo do seu chat */
     overflow: hidden; /* Garante que não haja scroll na página inteira */
+}
+
+.scroll-container {
+    /* Este container agora é quem rola */
+    height: 100vh;
+    overflow-y: scroll;
+    
+    /* A MÁGICA DO SCROLL SNAP ACONTECE AQUI */
+    scroll-snap-type: y mandatory;
+
+    /* Adicione de volta o comportamento suave para os cliques */
+    scroll-behavior: smooth;
 }
 
 /* ============================================== */
@@ -49,6 +61,8 @@ body.pagina-chat {
     align-items: center;
     text-align: center;
     width: 100%; 
+
+    scroll-snap-align: start;
 }
 
 .container {
