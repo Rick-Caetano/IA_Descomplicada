@@ -241,6 +241,19 @@ body.pagina-chat {
     line-height: 1.4;
 }
 
+.links{
+    font-size: 1rem;
+    color: #8ab4f8;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.links:hover {
+    text-decoration: underline;
+    color: #4f73ac;
+}
+
 /* ================================== */
 /*          ESTILOS DO CHAT IA        */
 /* ================================== */
