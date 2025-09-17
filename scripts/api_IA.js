@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const cabeçalhoChat = document.getElementById("cabeçalho-chat");
   const barraTopoChat = document.getElementById("barra-topo-chat");
   const sections = document.querySelectorAll('.full-page');
+  const elemento_dica = document.getElementById("dica");
 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
@@ -14,10 +15,18 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   input.addEventListener("focus", () => {
     document.body.style.overflow = "hidden"; // trava a rolagem
     chatBox.scrollTop = chatBox.scrollHeight; // força mostrar o fim do chat
+
+     if (window.innerWidth <= 768) { // Verifica se está no mobile
+       elemento_dica.classList.add("escondido");
+     }
   });
 
   input.addEventListener("blur", () => {
     document.body.style.overflow = ""; // libera a rolagem de novo
+
+    if (!barraTopoChat.classList.contains("escondido") && window.innerWidth <= 768) {
+        elemento_dica.classList.remove("escondido");
+      }
   });  
 
   function adicionarMensagemTela(mensagem, estiloClasse) {
@@ -148,21 +157,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     barraTopoChat.classList.remove("escondido");
   }
 
-  if (window.innerWidth <= 768) { // Verifica se está no mobile
-    input.addEventListener("click", async () => {
-      // esconde as dicas ao clicar no input do mobile
-      dicas.forEach(dica => dica.classList.add("escondido"));
-    });
-
-    input.addEventListener("blur", () => {
-      // Verifica se o chat já começou (se a barra de topo está visível)
-      // Se o chat NÃO começou, o cabeçalho pode voltar.
-      if (barraTopoChat.classList.contains("escondido")) {
-        cabeçalhoChat.classList.remove("escondido");
-      }
-    });
-  }
-
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
@@ -205,7 +199,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       console.error("Erro ao enviar para a IA:", error.message);
       alert("Ocorreu um erro ao conversar com a IA. Verifique se a API está funcionando.");
     }
-
     
   });
 
