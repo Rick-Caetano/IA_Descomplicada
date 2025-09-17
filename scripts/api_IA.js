@@ -148,6 +148,21 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     barraTopoChat.classList.remove("escondido");
   }
 
+  if (window.innerWidth <= 768) { // Verifica se está no mobile
+    input.addEventListener("click", async () => {
+      // esconde as dicas ao clicar no input do mobile
+      dicas.forEach(dica => dica.classList.add("escondido"));
+    });
+
+    input.addEventListener("blur", () => {
+      // Verifica se o chat já começou (se a barra de topo está visível)
+      // Se o chat NÃO começou, o cabeçalho pode voltar.
+      if (barraTopoChat.classList.contains("escondido")) {
+        cabeçalhoChat.classList.remove("escondido");
+      }
+    });
+  }
+
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
@@ -204,6 +219,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         }
       });
 
-  setInterval(trocaTextoDica, 7000); // Troca a dica a cada 10 segundos;
+  setInterval(trocaTextoDica, 7000); // Troca a dica a cada 7 segundos;
 
 });

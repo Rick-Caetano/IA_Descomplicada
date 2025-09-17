@@ -255,6 +255,13 @@ body.pagina-chat {
     color: #4f73ac;
 }
 
+.icones {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle; 
+    color: rgb(183, 87, 246);
+}
+
 /* ============================================== */
 /*          RODAPÉ FIXO (FOOTER)                  */
 /* ============================================== */
@@ -401,19 +408,6 @@ body.pagina-chat .chat-container {
     font-size: 1.3rem;
 } 
 
-/*
-@media screen and (max-width: 600px) {
-   section#chat-ia #input-area {
-    position: sticky; 
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 10px;
-    background-color: #202124;
-  }
-}*/
-
 .chat-container .subtitle {
     height: 120px; 
     font-size: 1rem;
@@ -438,6 +432,16 @@ body.pagina-chat section#chat-ia {
     font-family: 'Share Tech Mono', monospace;
     font-weight: 600;
 }
+
+.escondido {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    overflow: hidden;
+}
+
 
 /* Mensagem da IA */
 #chat-box > .mensagem_ia {
