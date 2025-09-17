@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const sections = document.querySelectorAll('.full-page');
   const elemento_dica = document.getElementById("dica");
 
+  var alturaInicial = window.innerHeight; 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
 
   //Funções
@@ -23,11 +24,16 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
   input.addEventListener("blur", () => {
     document.body.style.overflow = "auto"; // libera a rolagem de novo
+  });
 
-    if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 768) {
+    window.addEventListener("resize", () => {
+
+      if (window.innerHeight == alturaInicial) { //se a altura for igual à inicial mostra o elemento
         elemento_dica.classList.remove("escondido");
       }
-  });  
+    });
+  }
 
   function adicionarMensagemTela(mensagem, estiloClasse) {
     const elementoMensagem = document.createElement("div");
