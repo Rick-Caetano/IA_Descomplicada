@@ -154,6 +154,7 @@ body.pagina-chat {
     text-decoration: none;
     font-size: 1.5rem;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .btn-chat:hover {
@@ -252,6 +253,51 @@ body.pagina-chat {
 .links:hover {
     text-decoration: underline;
     color: #4f73ac;
+}
+
+/* ============================================== */
+/*          RODAPÉ FIXO (FOOTER)                  */
+/* ============================================== */
+
+.creditos {
+    /* Posicionamento Fixo */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de todo o conteúdo */
+
+    /* Estilo e Aparência */
+    background-color: rgba(11, 25, 47, 0.85); /* A cor de fundo principal, mas com um pouco de transparência */
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco para navegadores modernos */
+    -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
+    padding: 8px 0; /* Espaçamento vertical pequeno */
+    text-align: center;
+    border-top: 1px solid rgba(136, 146, 176, 0.2); /* Linha sutil de separação */
+}
+
+.creditos p {
+    margin: 0;
+    font-size: 0.9rem; /* Tamanho da fonte pequeno e discreto */
+    color: var(--cor-secundaria); /* Cor de texto suave */
+    letter-spacing: 0.5px;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rodape { 
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.rodape p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #bdc1c6;
 }
 
 /* ================================== */
