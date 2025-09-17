@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   if (window.innerWidth <= 768) {
     window.addEventListener("resize", () => {
 
-      if (window.innerHeight == alturaInicial) { //se a altura for igual à inicial mostra o elemento
+      if (window.innerHeight < alturaInicial) { //se a altura for igual à inicial mostra o elemento
+        elemento_dica.classList.add("escondido");
+      } else {
         elemento_dica.classList.remove("escondido");
       }
     });
