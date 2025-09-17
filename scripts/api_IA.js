@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   input.addEventListener("blur", () => {
     document.body.style.overflow = ""; // libera a rolagem de novo
 
-    if (!barraTopoChat.classList.contains("escondido") && window.innerWidth <= 768) {
+    if (barraTopoChat.classList.contains("escondido") && window.innerWidth <= 768) {
         elemento_dica.classList.remove("escondido");
       }
   });  
