@@ -22,11 +22,10 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   });
 
   input.addEventListener("blur", () => {
-    document.body.style.overflow = ""; // libera a rolagem de novo
+    document.body.style.overflow = "auto"; // libera a rolagem de novo
 
     if (window.innerWidth <= 768) {
         elemento_dica.classList.remove("escondido");
-        elemento_dica.classList.add("subtitle");
       }
   });  
 
