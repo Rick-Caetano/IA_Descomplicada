@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const barraTopoChat = document.getElementById("barra-topo-chat");
   const sections = document.querySelectorAll('.full-page');
   const elemento_dica = document.getElementById("dica");
+  const area_voltar_pagina = document.getElementById("area_voltar_pagina");
 
   var alturaInicial = window.innerHeight; 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
@@ -16,10 +17,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   input.addEventListener("focus", () => {
     document.body.style.overflow = "hidden"; // trava a rolagem
     chatBox.scrollTop = chatBox.scrollHeight; // força mostrar o fim do chat
-
-     if (window.innerWidth <= 768) { // Verifica se está no mobile
-       elemento_dica.classList.add("escondido");
-     }
   });
 
   input.addEventListener("blur", () => {
@@ -31,8 +28,10 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       if (window.innerHeight < alturaInicial) { //se a altura for igual à inicial mostra o elemento
         elemento_dica.classList.add("escondido");
+        area_voltar_pagina.classList.add("escondido");
       } else {
         elemento_dica.classList.remove("escondido");
+        area_voltar_pagina.classList.remove("escondido");
       }
     });
   }

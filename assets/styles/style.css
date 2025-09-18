@@ -539,7 +539,7 @@ body.pagina-chat section#chat-ia {
     stroke: #202124;
 }
 
-#voltar_index_area {
+#area_voltar_pagina {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
