@@ -262,6 +262,7 @@ body.pagina-chat {
     color: rgb(183, 87, 246);
 }
 
+
 .img-footer {
     margin-top: 10px;
     width: 10%;  
@@ -536,6 +537,59 @@ body.pagina-chat section#chat-ia {
 
 #butao-enviar svg {
     stroke: #202124;
+}
+
+#voltar_index_area {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#btn_voltar_index {
+    display: inline-block;
+    padding: 2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #A951EC, #3B82F6); /*Cria o gradiente*/
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+#btn_voltar_index span {
+    display: flex; /* O conteúdo interno container flex para não quebrar svg e texto */
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+
+    background-color: #202124; /* Cor de fundo da tela */
+    padding: 12px 18px;
+    border-radius: 4px;
+    
+    color: var(--cor-texto);
+    font-size: 0.9rem; 
+    font-weight: bold;
+    letter-spacing: 1px;
+    
+    transition: all 0.3s ease;
+}
+
+#btn_voltar_index svg {
+    width: 18px;  
+    height: 18px; 
+    fill: currentColor; 
+}
+
+/* --- 3. EFEITO HOVER --- */
+#btn_voltar_index:hover {
+    transform: translateY(-2px); /* Efeito de "levantar" o botão */
+    box-shadow: 0 4px 15px rgba(169, 81, 236, 0.3); /* Sombra suave com a cor do gradiente */
+}
+
+#btn_voltar_index:hover span {
+    background-color: transparent; 
+    color: white; /
 }
 
 /* Animação de "digitando" */
