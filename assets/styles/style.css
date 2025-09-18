@@ -262,6 +262,14 @@ body.pagina-chat {
     color: rgb(183, 87, 246);
 }
 
+.img-footer {
+    margin-top: 10px;
+    width: 10%;  
+    height: 10%;  
+    object-fit: cover; 
+    border-radius: 50%; 
+}
+
 /* ============================================== */
 /*          RODAPÉ FIXO (FOOTER)                  */
 /* ============================================== */
@@ -441,7 +449,6 @@ body.pagina-chat section#chat-ia {
     border: none;
     overflow: hidden;
 }
-
 
 /* Mensagem da IA */
 #chat-box > .mensagem_ia {
