@@ -133,6 +133,12 @@ body.pagina-chat {
     margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+    #menu h2 {
+        font-size: 2rem;
+    }
+}
+
 .menu-principal ul {
     list-style: none;
     padding: 0;
@@ -148,6 +154,12 @@ body.pagina-chat {
     font-size: 1.8rem;
     transition: all 0.3s ease;
     padding: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-principal a {
+        font-size: 1.2rem;
+    }
 }
 
 .menu-principal a:hover {
