@@ -135,7 +135,7 @@ body.pagina-chat {
 
 @media screen and (max-width: 768px) {
     #menu h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -158,7 +158,7 @@ body.pagina-chat {
 
 @media screen and (max-width: 768px) {
     .menu-principal a {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
