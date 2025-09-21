@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 :root {
-    /* PALETA DE CORES - Mais sóbria e profissional */
+    /* PALETA DE CORES */
     --cor-fundo: #0B192F;         /* Azul noturno */
     --cor-texto: #CCD6F6;         /* Cinza claro azulado */
     --cor-primaria: #FFFFFF;       /* Branco para destaque */
@@ -14,11 +14,6 @@
     --cor-acento-hover: rgba(100, 255, 218, 0.1); /* Fundo do botão no hover */
 }
 
-/*
-html {
-    scroll-behavior: smooth;
-}*/
-
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
@@ -26,26 +21,15 @@ body {
     font-size: 1.2rem;
     margin: 0;
     padding: 0;
-    
     height: 100vh;
     overflow: hidden; /* IMPEDE A ROLAGEM NO BODY */
 }
 
-body.pagina-chat {
-    background-color: #202124; /* A cor de fundo do seu chat */
-    overflow: hidden; /* Garante que não haja scroll na página inteira */
-}
-
 .scroll-container {
-    /* Este container agora é quem rola */
     height: 100vh;
     overflow-y: scroll;
-    
-    /* A MÁGICA DO SCROLL SNAP ACONTECE AQUI */
-    scroll-snap-type: y mandatory;
-
-    /* Adicione de volta o comportamento suave para os cliques */
-    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory; /* Ativa o scroll snap vertical */
+    scroll-behavior: smooth; /* Adicione de volta o comportamento suave para os cliques */
 }
 
 /* ============================================== */
@@ -54,14 +38,13 @@ body.pagina-chat {
 
 .full-page {
     min-height: 100vh;
-    min-height: 100dvh; /*viewport height dinamica*/
+    min-height: 100dvh; 
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%; 
-
     scroll-snap-align: start;
 }
 
@@ -84,28 +67,28 @@ body.pagina-chat {
 
 #capa h1 {
     font-size: 3.5rem;
-    color: var(--cor-primaria); /* Alterado para a cor primária (branco) */
-    text-shadow: none; /* Removido o brilho para melhor legibilidade */
+    color: var(--cor-primaria); 
+    text-shadow: none;
     margin: 0.5rem 0;
     text-transform: uppercase;
 }
 
 @media screen and (max-width: 768px) {
     #capa h1 {
-        font-size: 2.5rem; /* Ajuste para telas menores */
+        font-size: 2.5rem; 
     }
 }
 
-#capa .code-line {
+#capa .texto-descritivo {
     font-size: 1.5rem;
-    color: var(--cor-secundaria); /* Usando a cor secundária para texto de apoio */
+    color: var(--cor-secundaria); 
 }
 
-#capa .aprender {
-    color: var(--cor-acento); /* Destaque com a cor de acento */
+#capa .destaque {
+    color: var(--cor-acento);
 }
 
-#capa .tech-list {
+#capa .subtitulo {
     color: var(--cor-texto);
     letter-spacing: 2px;
 }
@@ -122,9 +105,59 @@ body.pagina-chat {
     transition: all 0.3s ease;
 }
 
-.btn-iniciar:hover {
+.btn-topico {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--cor-acento); /* Borda mais sutil */
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    color: var(--cor-acento);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 500px) {
+    .btn-topico {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        overflow: hidden;
+    }
+}
+
+.btn-iniciar:hover, .btn-topico:hover {
     background-color: var(--cor-acento-hover); /* Efeito de hover mais suave */
     color: var(--cor-acento);
+}
+
+#barra-topo {
+    /* Posicionamento Fixo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background-color: rgba(11, 25, 47, 0.85); /* Cor de fundo com transparência */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+    
+    /* Animação de entrada/saída */
+    transform: translateY(-100%); /* Começa "escondida" acima da tela */
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Classe que o JS vai adicionar para mostrar a barra */
+#barra-topo.visivel {
+    transform: translateY(0); /* Desliza para a posição visível */
 }
 
 #menu h2 {
@@ -163,7 +196,7 @@ body.pagina-chat {
 }
 
 .menu-principal a:hover {
-    color: var(--cor-acento); /* Hover com a cor de acento */
+    color: var(--cor-acento); 
     text-shadow: none;
 }
 
@@ -172,8 +205,8 @@ body.pagina-chat {
     display: inline-block;
     margin-top: 2rem;
     padding: 1rem 2rem;
-    border: 1px solid var(--cor-acento); /* Borda mais sutil */
-    border-radius: 4px; /* Bordas levemente arredondadas */
+    border: 1px solid var(--cor-acento); /* Borda sutil */
+    border-radius: 4px; 
     color: var(--cor-acento);
     text-decoration: none;
     font-size: 1.5rem;
@@ -184,14 +217,159 @@ body.pagina-chat {
 .btn-chat:hover {
     background-color: var(--cor-acento); /* Efeito de hover mais suave */
     color: var(--cor-fundo);
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    border: 1px solid var(--cor-acento); /* Borda mais sutil */
-    border-radius: 4px; /* Bordas levemente arredondadas */
+}
+
+.links{
+    font-size: 1rem;
+    color: #8ab4f8;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
+}
+
+.links:hover {
+    text-decoration: underline;
+    color: #4f73ac;
+}
+
+/* ============================================== */
+/*          RODAPÉ FIXO (FOOTER)                  */
+/* ============================================== */
+
+.creditos {
+    /* Posicionamento Fixo */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de todo o conteúdo */
+
+    /* Estilo e Aparência */
+    background-color: rgba(11, 25, 47, 0.85); /* A cor de fundo principal, mas com um pouco de transparência */
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco para navegadores modernos */
+    -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
+    padding: 8px 0; /* Espaçamento vertical pequeno */
+    text-align: center;
+    border-top: 1px solid rgba(136, 146, 176, 0.2); /* Linha sutil de separação */
+}
+
+.creditos p {
+    margin: 0;
+    font-size: 0.9rem; /* Tamanho da fonte pequeno e discreto */
+    color: var(--cor-secundaria); /* Cor de texto suave */
+    letter-spacing: 0.5px;
+}
+
+.rodape { 
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.rodape p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #bdc1c6;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icones {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle; 
+    color: rgb(183, 87, 246);
+}
+
+.img-footer {
+    margin-top: 10px;
+    width: 10%;  
+    height: 10%;  
+    object-fit: cover; 
+    border-radius: 50%; 
+}
+
+/* ============================================== */
+/* ESTILOS DAS PÁGINAS DE TÓPICO                  */
+/* ============================================== */
+
+.sub-topico-content {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: left;
+}
+
+.sub-topico-content h1 {
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    border-bottom: 1px solid var(--cor-secundaria); 
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.sub-topico-content h2 {
+    font-size: 2rem;
+    color: var(--cor-acento); 
+}
+
+/* Estiliza a lista de exemplos no Tópico 2 */
+.sub-topico-content ul {
+    list-style: none; /* Remove os marcadores padrão da lista */
+    padding-left: 0;
+}
+
+.sub-topico-content li {
+    margin-bottom: 2.5rem; 
+    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
+}
+
+/* Deixa o título de cada item da lista mais destacado */
+.sub-topico-content li strong {
+    color: var(--cor-primaria);
+    font-size: 1.4rem;
+    display: block; /* Faz com que o título ocupe sua própria linha */
+    margin-bottom: 0.5rem;
+}
+
+.texto-exemplo {
+    color: var(--cor-secundaria);
+    margin: 0.5rem 0;
+}
+
+.prompt-exemplo-paragrafo{
+    color: var(--cor-acento); 
+    font-family: 'Share Tech Mono', monospace; 
+    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
+    display: block; /* Garante que o prompt ocupe uma linha própria */
+    font-weight: bold;
+    background-color:#1f1f1f; 
+    border-radius: 8px; 
+    padding: 15px;
+}
+
+.prompt-exemplo-titulo{
+    margin-top: 0.75rem; 
+    color: var(--cor-primaria);
+    font-weight: bold;
+    font-style: normal; 
+}
+
+.aviso-importante, .dica-final {
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    margin-top: 1rem;
+}
+
+/* ================================== */
+/*          ESTILOS DO CHAT IA        */
+/* ================================== */
+
+body.pagina-chat {
+    background-color: #202124; 
+    overflow: hidden; /* Garante que não haja scroll na página inteira */
 }
 
 #master-container {
@@ -236,9 +414,8 @@ body.pagina-chat {
     font-weight: 600;
 }
 
-/* Modificação no cabeçalho inicial para ele sumir suavemente */
 #cabeçalho-chat {
-    transition: opacity 0.3s ease, max-height 0.5s ease, padding 0.5s ease;
+    transition: opacity 0.3s ease, max-height 0.5s ease, padding 0.5s ease; /* sumir suavemente */
     opacity: 1;
     max-height: 300px; /* Altura suficiente para o conteúdo */
     overflow: hidden;
@@ -266,90 +443,13 @@ body.pagina-chat {
     line-height: 1.4;
 }
 
-.links{
-    font-size: 1rem;
-    color: #8ab4f8;
-    font-family: 'Share Tech Mono', monospace;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.links:hover {
-    text-decoration: underline;
-    color: #4f73ac;
-}
-
-.icones {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle; 
-    color: rgb(183, 87, 246);
-}
-
-.img-footer {
-    margin-top: 10px;
-    width: 10%;  
-    height: 10%;  
-    object-fit: cover; 
-    border-radius: 50%; 
-}
-
-/* ============================================== */
-/*          RODAPÉ FIXO (FOOTER)                  */
-/* ============================================== */
-
-.creditos {
-    /* Posicionamento Fixo */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Garante que fique acima de todo o conteúdo */
-
-    /* Estilo e Aparência */
-    background-color: rgba(11, 25, 47, 0.85); /* A cor de fundo principal, mas com um pouco de transparência */
-    backdrop-filter: blur(5px); /* Efeito de vidro fosco para navegadores modernos */
-    -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
-    padding: 8px 0; /* Espaçamento vertical pequeno */
-    text-align: center;
-    border-top: 1px solid rgba(136, 146, 176, 0.2); /* Linha sutil de separação */
-}
-
-.creditos p {
-    margin: 0;
-    font-size: 0.9rem; /* Tamanho da fonte pequeno e discreto */
-    color: var(--cor-secundaria); /* Cor de texto suave */
-    letter-spacing: 0.5px;
-}
-
-.subcontainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.rodape { 
-    padding: 12px 16px;
-    text-align: center;
-}
-
-.rodape p {
-    margin: 4px 0;
-    font-size: 1rem;
-    color: #bdc1c6;
-}
-
-/* ================================== */
-/*          ESTILOS DO CHAT IA        */
-/* ================================== */
-
 .spinner {
     display: inline-block;
     width: 24px;
     height: 24px;
     border: 3px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    border-top-color: #64FFDA; /* Cor de acento */
+    border-top-color: #64FFDA; 
     animation: spin 1s linear infinite;
 }
 
@@ -384,7 +484,7 @@ section#chat-ia h2{
   content: "|"; /* Símbolo do cursor */
   margin-left: 4px;
   animation: blink 1s steps(1) infinite;
-  color: #333; /* Pode ajustar a cor se quiser */
+  color: #333; 
 }
 
 /* Animação do cursor piscando */
@@ -393,40 +493,23 @@ section#chat-ia h2{
   50.01%, 100% { opacity: 0; }
 }
 
-.chat-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 900px; /* Mantido para a página index */
-    background-color: #202124;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    overflow: hidden;
-    height: calc(var(--vh, 1vh) * 85); /* Altura na página index */
-}
-
-body.pagina-chat .chat-container {
+body.pagina-chat {
     max-width: none;
     border-radius: 0;
-    box-shadow: none;
-    
+    box-shadow: none; 
     /* DEFINE A ALTURA PARA OCUPAR A TELA INTEIRA DE FORMA ROBUSTA */
     height: 100vh;
     height: 100dvh;
     height: calc(var(--vh, 1dvh) * 100);
-
-     overflow: hidden;
+    overflow: hidden;
 }
 
 #chat-box {
      flex-grow: 1;
     overflow-y: auto;
     min-height: 0;
-    
     display: flex;
     flex-direction: column;
-
-    /* Propriedades adicionais para um bom espaçamento */
     padding: 16px;
     gap: 16px; /* Espaço entre os balões de mensagem */
 }
@@ -453,7 +536,7 @@ body.pagina-chat .chat-container {
 
 body.pagina-chat section#chat-ia {
     padding-top: 0;
-    height: 100vh; /* Ocupa a altura da tela */
+    height: 100vh; 
     height: 100dvh;
     justify-content: initial; /* Reseta o alinhamento vertical */
 }
@@ -474,12 +557,11 @@ body.pagina-chat section#chat-ia {
     overflow: hidden;
 }
 
-/* Mensagem da IA */
 #chat-box > .mensagem_ia {
     background-color: #3c4043;
     color: #e8eaed;
     align-self: flex-start;
-    border-bottom-left-radius: 4px; /* O "rabicho" da mensagem */
+    border-bottom-left-radius: 4px; 
     padding: 12px 16px;
     border-radius: 20px;
     max-width: 80%;
@@ -487,6 +569,10 @@ body.pagina-chat section#chat-ia {
     font-size: 1.1rem;
     text-align: left;
     width: fit-content;
+      /*
+        *   Se o texto for curto, `width: fit-content` fará o balão "encolher" para se ajustar ao texto.
+        *   Se o texto for longo, ele tentará se expandir. No entanto, a regra `max-width: 80%` atuará como um limite, forçando o texto a quebrar a linha e impedindo que o balão ocupe mais de 80% da largura do chat.
+    */
 }
 
 .mensagem_ia p, .mensagem_usuario p {
@@ -494,13 +580,11 @@ body.pagina-chat section#chat-ia {
     white-space: pre-wrap;
 }
 
-/* Mensagem do Usuário */
 #chat-box > .mensagem_usuario {
     background-color: #8ab4f8;
-    color: #202124; /* Texto escuro para legibilidade máxima */
+    color: #202124; 
     align-self: flex-end;
-    border-bottom-right-radius: 4px; /* O "rabicho" da mensagem */
-    /* Estilos de melhoria aplicados */
+    border-bottom-right-radius: 4px; 
     padding: 12px 16px;
     border-radius: 20px;
     max-width: 80%;
@@ -508,12 +592,6 @@ body.pagina-chat section#chat-ia {
     font-size: 1.1rem;
     text-align: left;
     width: fit-content;
-    /*
-        *   Se o texto for curto, `width: fit-content` fará o balão "encolher" para se ajustar ao texto.
-        *   Se o texto for longo, ele tentará se expandir. No entanto, a regra `max-width: 80%` atuará como um limite, forçando o texto a quebrar a linha e impedindo que o balão ocupe mais de 80% da largura do chat.
-
-        Com esta única adição, seus balões de mensagem ficarão perfeitos, se ajustando dinamicamente ao tamanho do texto e proporcionando o visual clássico e limpo de aplicativos de chat.
-    */
 }
 
 #input-area {
@@ -585,16 +663,13 @@ body.pagina-chat section#chat-ia {
     align-items: center; 
     justify-content: center; 
     gap: 8px; 
-
-    background-color: #202124; /* Cor de fundo da tela */
+    background-color: #202124; 
     padding: 12px 18px;
     border-radius: 4px;
-    
     color: var(--cor-texto);
     font-size: 0.9rem; 
     font-weight: bold;
     letter-spacing: 1px;
-    
     transition: all 0.3s ease;
 }
 
@@ -604,7 +679,6 @@ body.pagina-chat section#chat-ia {
     fill: currentColor; 
 }
 
-/* --- 3. EFEITO HOVER --- */
 #btn_voltar_index:hover {
     transform: translateY(-2px); /* Efeito de "levantar" o botão */
     box-shadow: 0 4px 15px rgba(169, 81, 236, 0.3); /* Sombra suave com a cor do gradiente */
@@ -641,9 +715,8 @@ body.pagina-chat section#chat-ia {
 /*          ESTILIZAÇÃO DA BARRA DE ROLAGEM (SCROLLBAR)   */
 /* ====================================================== */
 
-/* Para navegadores baseados em WebKit (Chrome, Safari, Edge, etc.) */
 #chat-box::-webkit-scrollbar {
-    width: 8px; /* Largura da barra de rolagem. 8px é fino e moderno. */
+    width: 8px; /* Largura da barra de rolagem. 8px é fino */
 }
 
 #chat-box::-webkit-scrollbar-track {
@@ -652,9 +725,9 @@ body.pagina-chat section#chat-ia {
 }
 
 #chat-box::-webkit-scrollbar-thumb {
-    background-color: #4A4F54; /* Cor do "polegar" (a parte que você arrasta). Um cinza sutil. */
-    border-radius: 10px; /* Bordas arredondadas para combinar com o resto do layout. */
-    border: 2px solid #202124; /* Cria um efeito de "preenchimento", fazendo a barra parecer mais fina. */
+    background-color: #4A4F54; 
+    border-radius: 10px; 
+    border: 2px solid #202124; 
 }
 
 #chat-box::-webkit-scrollbar-thumb:hover {
@@ -664,9 +737,8 @@ body.pagina-chat section#chat-ia {
 /* Para Firefox */
 #chat-box {
   scrollbar-width: thin; /* Deixa a barra mais fina no Firefox. */
-  scrollbar-color: #4A4F54 #202124; /* Sintaxe: Cor do "polegar" e Cor da "trilha". */
+  scrollbar-color: #4A4F54 #202124;
 }
-
 
 /* ====================================================== */
 /*          ESTILOS PARA BLOCOS DE CÓDIGO (PRISM.JS)      */
@@ -674,7 +746,7 @@ body.pagina-chat section#chat-ia {
 
 /* Container do bloco de código */
 .bloco-de-codigo {
-    background-color: #1E1E1E; /* Um fundo um pouco mais escuro para destacar */
+    background-color: #1E1E1E; 
     border-radius: 8px;
     margin: 12px 0; /* Espaçamento vertical dentro do balão de mensagem */
     overflow: hidden; /* Garante que os cantos arredondados sejam aplicados ao conteúdo */
@@ -686,7 +758,7 @@ body.pagina-chat section#chat-ia {
     margin: 0 !important; /* Remove qualquer margem padrão */
     padding: 16px !important; /* Espaçamento interno */
     border-radius: 0 !important;
-    background: none !important; /* Removemos o fundo do prism para usar o nosso */
+    background: none !important; /* Remove o fundo padrão */
     white-space: pre-wrap;       /* Permite quebra de linha em texto longo */
     word-wrap: break-word;       /* Garante que palavras longas quebrem */
 }
@@ -706,197 +778,4 @@ body.pagina-chat section#chat-ia {
     text-transform: uppercase;
 }
 
-/* ============================================== */
-/* ESTILOS DAS PÁGINAS DE TÓPICO                  */
-/* ============================================== */
-
-.pagina-topico {
-    overflow: hidden;
-}
-
-.container-topico {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-.sub-topico {
-    height: 100vh;
-    width: 100%;
-    scroll-snap-align: start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sub-topico-content {
-    max-width: 800px;
-    padding: 2rem;
-    text-align: left;
-}
-
-.sub-topico-content h1 {
-    font-size: 3rem;
-    color: var(--cor-primaria);
-    border-bottom: 1px solid var(--cor-secundaria); /* Borda mais suave */
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-}
-
-.sub-topico-content h2 {
-    font-size: 2rem;
-    color: var(--cor-acento); /* Títulos secundários com a cor de acento */
-}
-
-/* Estiliza a lista de exemplos no Tópico 2 */
-.sub-topico-content ul {
-    list-style: none; /* Remove os marcadores padrão da lista */
-    padding-left: 0;
-}
-
-.sub-topico-content li {
-    margin-bottom: 2.5rem; /* CRIA O ESPAÇO entre cada item da lista */
-    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
-}
-
-/* Deixa o título de cada item da lista mais destacado */
-.sub-topico-content li strong {
-    color: var(--cor-primaria);
-    font-size: 1.4rem;
-    display: block; /* Faz com que o título ocupe sua própria linha */
-    margin-bottom: 0.5rem;
-}
-
-/* Parágrafo que contém os exemplos */
-.texto-exemplo {
-    color: var(--cor-secundaria);
-    margin: 0.5rem 0;
-}
-
-/* estiliza o parágrafo do prompt */
-
-.prompt-exemplo-paragrafo{
-    color: var(--cor-acento); /* USA A COR DE DESTAQUE DO SITE */
-    font-family: 'Share Tech Mono', monospace; /* Usa a fonte monoespaçada para dar cara de instrução */
-    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
-    display: block; /* Garante que o prompt ocupe uma linha própria */
-    font-weight: bold;
-    background-color:#1f1f1f; /* Fundo preto para destacar o prompt */
-    border-radius: 8px; /* Bordas arredondadas para suavizar o visual */
-    padding: 15px; /* Espaçamento interno para destacar o texto */
-}
-
-.prompt-exemplo-titulo{
-    margin-top: 0.75rem; /* Adiciona um espaço acima do prompt */
-    color: var(--cor-primaria);
-    font-weight: bold;
-    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
-}
-
-/* Estilo para o aviso de saúde e a dica final */
-.aviso-importante, .dica-final {
-    font-size: 1rem;
-    color: var(--cor-secundaria);
-    margin-top: 1rem;
-}
-
-pre {
-    background-color: #112240; /* Tom de azul um pouco mais claro que o fundo */
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-}
-pre, code {
-    font-family: 'Fira Code', 'JetBrains Mono', Consolas, 'Courier New', monospace;
-    font-size: 1.1rem;
-    font-variant-ligatures: common-ligatures;
-    -webkit-font-variant-ligatures: common-ligatures;
-}
-
-/* ============================================== */
-/* COMPONENTES FLUTUANTES E NAVEGAÇÃO             */
-/* ============================================== */
-
-.logo-flutuante {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-}
-
-.logo-flutuante img {
-    height: 50px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.logo-flutuante:hover img {
-    opacity: 1;
-}
-
-.home-flutuante {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 100;
-    color: var(--cor-acento);
-    text-decoration: none;
-    font-size: 1.5rem;
-    border: 1px solid var(--cor-acento);
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
-.home-flutuante:hover {
-    background-color: var(--cor-acento-hover);
-}
-
-.navegacao-vertical {
-    position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-nav-vertical {
-    background: rgba(204, 214, 246, 0.1);
-    border: 1px solid var(--cor-secundaria);
-    color: var(--cor-secundaria);
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px 0;
-}
-
-.btn-nav-vertical:hover {
-    background: var(--cor-acento-hover);
-    color: var(--cor-acento);
-    border-color: var(--cor-acento);
-}
-
-.navegacao-paginas {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-}
-
-.btn-nav {
-    padding: 10px 20px;
-    border: 1px solid var(--cor-texto);
-    color: var(--cor-texto);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-radius: 4px;
-}
-
-.btn-nav:hover {
-    background-color: var(--cor-acento-hover);
-    color: var(--cor-acento);
-    border-color: var(--cor-acento);
-}
 

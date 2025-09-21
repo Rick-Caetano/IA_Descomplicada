@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   const sections = document.querySelectorAll('.full-page');
   const elemento_dica = document.getElementById("dica");
   const area_voltar_pagina = document.getElementById("area_voltar_pagina");
+  const barraTopo = document.getElementById('barra-topo');
+  const secaoCapa = document.getElementById('capa');
 
   var alturaInicial = window.innerHeight; 
   var simulaDigitacao = false; // Variável para controlar o estado de digitação
@@ -59,7 +61,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     if (estiloClasse === 'mensagem_ia') {
         Prism.highlightAll();
     }
-    
   }
 
   function mostrarSpinner(){
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     cabeçalhoChat.classList.add("escondido");
     barraTopoChat.classList.remove("escondido");
   }
-
+  
   //começa a escutar o clique no botão
   document.getElementById("butao-enviar").addEventListener("click", async () => { 
     try {
