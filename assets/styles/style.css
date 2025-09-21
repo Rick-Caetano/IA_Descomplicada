@@ -133,14 +133,15 @@ body {
     -webkit-backdrop-filter: blur(5px);
     border-bottom: 1px solid rgba(136, 146, 176, 0.2);
     
-    /* Animação de entrada/saída */
-    transform: translateY(-100%); /* Começa "escondida" acima da tela */
-    transition: transform 0.4s ease-in-out;
+    visibility: hidden; /* Começa completamente invisível e não clicável */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
 /* Classe que o JS vai adicionar para mostrar a barra */
-#barra-topo .visivel {
-    transform: translateY(0); /* Desliza para a posição visível */
+#barra-topo.visivel {
+    visibility: visible; /* Torna o elemento visível e clicável */
+    opacity: 1; /* Torna o elemento totalmente opaco (efeito de fade-in) */
 }
 
 #menu h2 {
@@ -255,22 +256,23 @@ body {
     margin: 0.5rem 0;
 }
 
-.prompt-exemplo-paragrafo{
-    color: var(--cor-acento); 
-    font-family: 'Share Tech Mono', monospace; 
-    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
-    display: block; /* Garante que o prompt ocupe uma linha própria */
-    font-weight: bold;
-    background-color:#1f1f1f; 
-    border-radius: 8px; 
-    padding: 15px;
-}
-
 .prompt-exemplo-titulo{
     margin-top: 0.75rem; 
     color: var(--cor-primaria);
     font-weight: bold;
     font-style: normal; 
+}
+
+.prompt-exemplo-paragrafo{
+    color: var(--cor-acento); 
+    font-family: 'Share Tech Mono', monospace; 
+    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
+    font-size: 1.0rem;
+    display: block; /* Garante que o prompt ocupe uma linha própria */
+    font-weight: bold;
+    background-color:#1f1f1f; 
+    border-radius: 8px; 
+    padding: 15px;
 }
 
 .aviso-importante, .dica-final {
@@ -390,7 +392,7 @@ body.pagina-chat {
 }
 
 #barra-topo-chat {
-     display: flex;
+    display: flex;
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
