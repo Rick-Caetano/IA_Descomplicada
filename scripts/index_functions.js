@@ -1,3 +1,6 @@
+const barraTopo = document.getElementById('barra-topo');
+const secaoCapa = document.getElementById('capa');
+
 function controlarVisibilidadeBarra() {
     // Pega a posição da parte de baixo da seção "capa"
     const capaBottom = secaoCapa.getBoundingClientRect().bottom;
