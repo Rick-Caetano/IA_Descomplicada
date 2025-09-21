@@ -36,23 +36,6 @@ body {
 /* ESTILOS DA PÁGINA PRINCIPAL (INDEX.HTML)       */
 /* ============================================== */
 
-.full-page {
-    min-height: 100vh;
-    min-height: 100dvh; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%; 
-    scroll-snap-align: start;
-}
-
-.container {
-    max-width: 900px;
-    padding: 2rem;
-}
-
 #capa .logo {
     height: 15%;
     width: 15%;
@@ -156,7 +139,7 @@ body {
 }
 
 /* Classe que o JS vai adicionar para mostrar a barra */
-#barra-topo.visivel {
+#barra-topo .visivel {
     transform: translateY(0); /* Desliza para a posição visível */
 }
 
@@ -170,6 +153,28 @@ body {
     #menu h2 {
         font-size: 2.2rem;
     }
+}
+
+/* ============================================== */
+/* ESTILOS DOS TÓPICOS                            */
+/* ============================================== */
+
+
+.full-page {
+    min-height: 100vh;
+    min-height: 100dvh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%; 
+    scroll-snap-align: start;
+}
+
+.container {
+    max-width: 900px;
+    padding: 2rem;
 }
 
 .menu-principal ul {
@@ -200,6 +205,80 @@ body {
     text-shadow: none;
 }
 
+.sub-topico-content {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: left;
+}
+
+.sub-topico-content h1 {
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    border-bottom: 1px solid var(--cor-secundaria); 
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .sub-topico-content h1 {
+        font-size: 2.8rem; /* Reduz de 3rem para um tamanho mais amigável */
+        margin-bottom: 30px; /* Reduz um pouco a margem inferior */
+    }
+}
+
+.sub-topico-content h2 {
+    font-size: 2rem;
+    color: var(--cor-acento); 
+}
+
+/* Estiliza a lista de exemplos no Tópico 2 */
+.sub-topico-content ul {
+    list-style: none; /* Remove os marcadores padrão da lista */
+    padding-left: 0;
+}
+
+.sub-topico-content li {
+    margin-bottom: 2.5rem; 
+    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
+}
+
+/* Deixa o título de cada item da lista mais destacado */
+.sub-topico-content li strong {
+    color: var(--cor-primaria);
+    font-size: 1.4rem;
+    display: block; /* Faz com que o título ocupe sua própria linha */
+    margin-bottom: 0.5rem;
+}
+
+.texto-exemplo {
+    color: var(--cor-secundaria);
+    margin: 0.5rem 0;
+}
+
+.prompt-exemplo-paragrafo{
+    color: var(--cor-acento); 
+    font-family: 'Share Tech Mono', monospace; 
+    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
+    display: block; /* Garante que o prompt ocupe uma linha própria */
+    font-weight: bold;
+    background-color:#1f1f1f; 
+    border-radius: 8px; 
+    padding: 15px;
+}
+
+.prompt-exemplo-titulo{
+    margin-top: 0.75rem; 
+    color: var(--cor-primaria);
+    font-weight: bold;
+    font-style: normal; 
+}
+
+.aviso-importante, .dica-final {
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    margin-top: 1rem;
+}
+
 .btn-chat {
     background-color: var(--cor-acento-hover);
     display: inline-block;
@@ -218,6 +297,7 @@ body {
     background-color: var(--cor-acento); /* Efeito de hover mais suave */
     color: var(--cor-fundo);
 }
+
 
 .links{
     font-size: 1rem;
@@ -290,77 +370,6 @@ body {
     height: 10%;  
     object-fit: cover; 
     border-radius: 50%; 
-}
-
-/* ============================================== */
-/* ESTILOS DAS PÁGINAS DE TÓPICO                  */
-/* ============================================== */
-
-.sub-topico-content {
-    max-width: 800px;
-    padding: 2rem;
-    text-align: left;
-}
-
-.sub-topico-content h1 {
-    font-size: 3rem;
-    color: var(--cor-primaria);
-    border-bottom: 1px solid var(--cor-secundaria); 
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-}
-
-.sub-topico-content h2 {
-    font-size: 2rem;
-    color: var(--cor-acento); 
-}
-
-/* Estiliza a lista de exemplos no Tópico 2 */
-.sub-topico-content ul {
-    list-style: none; /* Remove os marcadores padrão da lista */
-    padding-left: 0;
-}
-
-.sub-topico-content li {
-    margin-bottom: 2.5rem; 
-    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
-}
-
-/* Deixa o título de cada item da lista mais destacado */
-.sub-topico-content li strong {
-    color: var(--cor-primaria);
-    font-size: 1.4rem;
-    display: block; /* Faz com que o título ocupe sua própria linha */
-    margin-bottom: 0.5rem;
-}
-
-.texto-exemplo {
-    color: var(--cor-secundaria);
-    margin: 0.5rem 0;
-}
-
-.prompt-exemplo-paragrafo{
-    color: var(--cor-acento); 
-    font-family: 'Share Tech Mono', monospace; 
-    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
-    display: block; /* Garante que o prompt ocupe uma linha própria */
-    font-weight: bold;
-    background-color:#1f1f1f; 
-    border-radius: 8px; 
-    padding: 15px;
-}
-
-.prompt-exemplo-titulo{
-    margin-top: 0.75rem; 
-    color: var(--cor-primaria);
-    font-weight: bold;
-    font-style: normal; 
-}
-
-.aviso-importante, .dica-final {
-    font-size: 1rem;
-    color: var(--cor-secundaria);
-    margin-top: 1rem;
 }
 
 /* ================================== */
