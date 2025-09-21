@@ -221,7 +221,7 @@ body {
 
 @media screen and (max-width: 768px) {
     .sub-topico-content h1 {
-        font-size: 2.8rem; /* Reduz de 3rem para um tamanho mais amigável */
+        font-size: 2.3rem; /* Reduz de 3rem para um tamanho mais amigável */
         margin-bottom: 30px; /* Reduz um pouco a margem inferior */
     }
 }
