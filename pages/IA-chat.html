@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content"> <!-- ponto chave para permitir o limite da viewport para mobile ao puxar o teclado virtual -->
+    <title>Chat IA - Desvendando a Inteligência Artificial</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/inteligencia-artificial.png">
+
+    <!-- PRISM.JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+</head>
+<body class="pagina-chat">
+
+    <div id="master-container">
+
+        
+        <div id="barra-topo-chat" class="escondido">
+            <img src="..\assets\images\inteligencia-artificial.png" alt="" style="width:30px; height:auto; cursor: pointer;" onclick="window.location.href='../index.html'">
+            <span>Descomplicando IA - Powered by: Gemini</span>
+        </div>
+
+        <!-- CABEÇALHO INICIAL (agora dentro do master) -->
+        <div id="cabeçalho-chat">
+            <h2>Como posso ajudar?</h2>
+            <p id="dica" class="subtitle">Faça uma pergunta como: <span id="troca_dica" class="dicas cursor-piscando">"Me conte o que você pode fazer"</span></p>
+        </div>
+
+        <!-- CORPO DO CHAT (agora dentro do master) -->
+        <div id="chat-box">
+            <div class="mensagem_ia">
+                <p>Olá! Estou pronto para conversar. O que você gostaria de saber? 😊</p>
+            </div>
+        </div>
+
+        <div id="area_voltar_pagina">
+            <button id="btn_voltar_index" onclick="window.location.href='../index.html#topico6'">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"/></svg>VOLTAR</span>
+            </button>
+        </div>
+
+        <div id="input-area">
+            <textarea id="input-usuario" placeholder="Pergunte alguma coisa..." rows="1"></textarea>
+            <button id="butao-enviar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+        </div>
+
+    </div> <!-- Fim do master-container -->
+
+    <script src="../scripts/chatIA_functions.js" type="module"></script>
+
+    <script>
+    // Ajusta a altura do master-container para nunca ultrapassar a viewport real
+    function ajustarAltura() {
+        const vh = window.innerHeight * 0.01; 
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Executa no carregamento
+    ajustarAltura();
+
+    // Recalcula sempre que a janela for redimensionada
+    window.addEventListener('resize', ajustarAltura);
+    </script>
+</body>
+</html>

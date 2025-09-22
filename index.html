@@ -9,165 +9,324 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="./assets/images/inteligencia-artificial.png">
+
+    <!-- PRISM.JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
 </head>
 <body>
 
+    <div id="barra-topo" class="escondido">
+        <img src=".\assets\images\inteligencia-artificial.png" alt="" style="width:30px; height:auto; cursor: pointer;" onclick="window.location.href='index.html'">
+        <span>Descomplicando IA</span>
+    </div>
+
     <!-- Seção da Capa -->
-    <section id="capa" class="full-page">
-        <div class="container">
-            <p class="code-line">Descubra o que a IA é capaz de <span class="aprender">criar</span></p>
-            <h1>Aprenda a usar IA de verdade para o seu dia a dia</h1>
-            <p class="tech-list">Tire 10 minutos para entender mais sobre Inteligência Artificial</p>
-            <a href="#topico1" class="btn-iniciar">Iniciar Jornada</a>
-            <a href="#menu" class="btn-iniciar">Ver Tópicos</a>
-        </div>
-    </section>
+    <main class="scroll-container">
 
-    <!-- Seção do Menu de Tópicos -->
-    <section id="menu" class="full-page">
-        <div class="container">
-            <h2>Navegue pelos Tópicos:</h2>
-            <nav class="menu-principal">
-                <ul>
-                    <li><a href="#topico1">1. O que é Inteligência Artificial?</a></li>
-                    <li><a href="#topico2">2. A IA na sua Rotina (e você nem percebe!)</a></li>
-                    <li><a href="#topico3">3. A IA no Trabalho: Uma Nova Ferramenta</a></li>
-                    <li><a href="#topico4">4. Como "Conversar" com a IA (Prompts)</a></li>
-                    <li><a href="#chat-ia">5. teste pratico ia</a></li>
-                    <li><a href="#topico5">6. Ferramentas para Começar a Usar Hoje</a></li>
-                    <li><a href="#topico6">7. O Futuro é Agora: O que esperar da IA?</a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
-
-    <!-- Tópico 1: Introdução à IA -->
-    <section id="topico1" class="full-page">
-        <div class="container sub-topico-content">
-            <h1>1. O que é Inteligência Artificial?</h1>
-            <h2>Em palavras simples, é ensinar o computador a "pensar".</h2>
-            <p>
-                Imagine que você quer ensinar uma criança a reconhecer um gato. Você mostra várias fotos de gatos e diz "isto é um gato". Depois de ver muitos exemplos, a criança aprende a identificar um gato sozinha, mesmo que nunca tenha visto aquela foto específica antes.
-            </p>
-            <p>
-                A Inteligência Artificial faz algo parecido: nós "alimentamos" o computador com uma quantidade enorme de informações (textos, imagens, sons) e, através de complexas "receitas" chamadas <strong>algoritmos</strong>, ele aprende a reconhecer padrões, tomar decisões e até criar coisas novas.
-            </p>
-            <p><strong>Pense num algoritmo como uma receita de bolo:</strong> um conjunto de instruções passo a passo. A IA usa receitas muito mais complexas para "cozinhar" respostas e soluções.</p>
-        </div>
-    </section>
-
-    <!-- Tópico 2: Aplicações no dia a dia -->
-    <section id="topico2" class="full-page">
-        <div class="container sub-topico-content">
-            <h1>2. A IA na sua Rotina (e você nem percebe!)</h1>
-            <p>Acha que IA é coisa de filme de ficção científica? Pense de novo! Você provavelmente já usa todos os dias. Veja alguns exemplos:</p>
-            <ul>
-                <li><strong>GPS e Mapas (Waze, Google Maps):</strong> Quando o aplicativo recalcula sua rota em tempo real para evitar o trânsito, é a IA analisando dados de milhares de carros para encontrar o melhor caminho para você.</li>
-                <li><strong>Recomendações (Netflix, Spotify, Amazon):</strong> A "mágica" que sugere o próximo filme ou produto que você vai amar é a IA analisando seus gostos e comparando com milhões de outros usuários.</li>
-                <li><strong>Assistentes de Voz (Siri, Alexa):</strong> Quando você pede para tocar uma música ou pergunta a previsão do tempo, a IA está trabalhando para entender sua voz e sua intenção.</li>
-                <li><strong>Filtro de Spam do seu E-mail:</strong> A IA lê e entende quais e-mails são propaganda indesejada, movendo-os para a caixa de spam e deixando sua caixa de entrada mais limpa.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Tópico 3: Uso Profissional -->
-    <section id="topico3" class="full-page">
-        <div class="container sub-topico-content">
-            <h1>3. A IA no Trabalho: Uma Nova Ferramenta</h1>
-            <p>No ambiente profissional, a IA não veio para substituir pessoas, mas para ser uma poderosa assistente que nos ajuda a trabalhar melhor e com mais inteligência.</p>
-            
-            <h2>Benefícios Principais:</h2>
-            <ul>
-                <li><strong>Automatizar tarefas chatas:</strong> Sabe aquelas tarefas repetitivas, como organizar planilhas ou transcrever reuniões? A IA pode fazer isso em segundos.</li>
-                <li><strong>Analisar informações:</strong> A IA pode ler relatórios gigantescos e encontrar as informações mais importantes, ajudando a tomar decisões com base em dados.</li>
-                <li><strong>Estimular a criatividade:</strong> Com dificuldades para começar um texto ou ter ideias? A IA pode sugerir rascunhos, títulos e novos ângulos para um projeto.</li>
-            </ul>
-
-            <h2>Desafios e Pontos de Atenção:</h2>
-            <p>É fundamental lembrar que a IA é uma ferramenta. Ela pode errar! A supervisão humana, o bom senso e a checagem das informações são sempre essenciais.</p>
-        </div>
-    </section>
-
-    <!-- Tópico 4: Prompts -->
-    <section id="topico4" class="full-page">
-        <div class="container sub-topico-content">
-            <h1>4. Como "Conversar" com a IA (A Arte do Prompt)</h1>
-            <p>O "prompt" é simplesmente o comando ou a pergunta que você faz para a IA. Quanto melhor o seu pedido, melhor será a resposta. É como pedir um café: se você só disser "quero um café", pode receber qualquer coisa. Mas se disser "quero um café expresso, curto e sem açúcar", a chance de receber exatamente o que você quer é muito maior.</p>
-
-            <h2>Dicas para Criar Bons Prompts:</h2>
-            <ul>
-                <li><strong>Seja Específico:</strong><br>
-                    - <em>Ruim:</em> "Fale sobre marketing."<br>
-                    - <em>Bom:</em> "Crie 5 dicas de marketing digital para uma pequena floricultura que quer aumentar suas vendas online."
-                </li>
-                <li><strong>Dê um Contexto:</strong><br>
-                    - <em>Ruim:</em> "Escreva um e-mail."<br>
-                    - <em>Bom:</em> "Escreva um e-mail profissional e amigável para um cliente, agradecendo pela parceria no último ano e desejando boas festas."
-                </li>
-                <li><strong>Defina o Formato:</strong><br>
-                    - Peça para a IA responder em formato de lista, tabela, parágrafos, etc. "Liste os prós e contras...", "Crie uma tabela comparando..."
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="chat-ia" class="full-page">
-        <div class="container chat-container">
-            <h2>Como posso ajudar?</h2>
-            <p class="subtitle">Faça uma pergunta e tenha seu primeiro contato com uma Inteligência Artificial. Experimente perguntar "Me explique o que é um algoritmo como se eu tivesse 10 anos".</p>
-
-            <!-- A conversa aparecerá aqui -->
-            <div id="chat-box">
-                <div class="ai-message">
-                    <p>Olá! Estou pronto para conversar. O que você gostaria de saber?</p>
+        
+        <section id="capa" class="full-page">
+            <div class="container">
+                <img src="./assets/images/inteligencia-artificial.png" alt="Ícone de Inteligência Artificial" class="logo">
+                <p class="texto-descritivo">Descubra o que a <span class="destaque">Inteligência Artificial</span> é capaz de criar</p>
+                <h1>Aprenda a usar IA de verdade para o seu dia a dia</h1>
+                <p class="subtitulo">Tire 10 minutos para entender mais sobre Inteligência Artificial</p>
+                <a href="#topico1" class="btn-iniciar">Iniciar Jornada</a>
+                <a href="#menu" class="btn-topico">Ver Tópicos</a>
             </div>
-        </div>
+        </section>
 
-        <div id="input-area">
-            <textarea id="input-usuario" placeholder="Pergunte alguma coisa..." rows="1"></textarea>
-            <button id="butao-enviar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-        </div>
-    </section>
+        <!-- Seção do Menu de Tópicos -->
+        <section id="menu" class="full-page">
+            <div class="container">
+                <h2>Conheça os Tópicos:</h2>
+                <nav class="menu-principal">
+                    <ul>
+                        <li><a href="#topico1">1. O que é Inteligência Artificial?</a></li>
+                        <li><a href="#topico2">2. A IA na sua Rotina (e você nem percebe!)</a></li>
+                        <li><a href="#topico3">3. A IA no Trabalho: Uma Nova Ferramenta</a></li>
+                        <li><a href="#topico4">4. Como "Conversar" com a IA (Prompts)</a></li>
+                        <li><a href="#topico5">5. O Futuro é Agora: O que esperar da IA?</a></li>
+                        <li><a href="#topico6">6. Teste Prático: Converse com a IA</a></li>
+                        <li><a href="#topico7">7. Ferramentas para Começar a Usar Hoje</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
-    <!-- Tópico 5: Ferramentas -->
-    <section id="topico5" class="full-page">
+        <!-- Tópico 1: Introdução à IA -->
+        <section id="topico1" class="full-page">
+            <div class="container sub-topico-content">
+                <h1>1. O que é Inteligência Artificial?</h1>
+                <h2>Em palavras simples, é fazer o computador realmente "pensar".</h2>
+                <p>
+                    Pense na IA como um assistente inteligente que aprende com exemplos, assim como uma criança aprende a reconhecer um gato. Ela entende o que você escreve, responde como uma conversa e ajuda desde coisas simples, como criar uma lista de compras, até explicar assuntos complexos de um jeito fácil. É como ter alguém sempre à mão para facilitar sua vida e abrir novas possibilidades.
+                </p>
+            </div>
+        </section>
+
+            <!-- Tópico 2: Aplicações no dia a dia -->
+        <section id="topico2" class="full-page">
+            <div class="container sub-topico-content">
+                <h1>2. Aplicações da IA no dia a dia</h1>
+                <p>
+                    A inteligência artificial já faz muito mais do que responder perguntas: ela pode automatizar tarefas repetitivas, organizar suas informações e até criar imagens e documentos prontos para uso — tudo de forma acessível, sem saber programar.
+                </p>
+
+                <h2>Exemplos Práticos:</h2>
+
+                <ul>
+                    <li>
+                        <strong>Criação e formatação de planilhas</strong>
+                        <p class="texto-exemplo">Exemplos: gerar uma planilha a partir de uma lista de itens, criar fórmulas, sumarizar vendas por mês.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo"> “Crie uma planilha com colunas: Data, Produto, Quantidade, Preço; some as vendas por mês.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Limpeza e organização de dados</strong>
+                        <p class="texto-exemplo">Exemplos: transformar nomes em Maiúsculas, ordenar alfabeticamente, remover duplicatas, padronizar endereços.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Receba esta lista de nomes e retorne-a em ordem alfabética e com cada nome começando com letra maiúscula.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Resumos e simplificação de documentos</strong>
+                        <p class="texto-exemplo">Exemplos: resumir relatórios longos, extrair pontos-chave de uma reunião.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“suma este relatório em 5 tópicos fáceis de entender.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Escrita e resposta de e-mails</strong>
+                        <p class="texto-exemplo">Exemplos: escrever e-mails formais, sugerir respostas rápidas, adaptar o tom para diferentes públicos.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Escreva um e-mail formal pedindo reembolso com tom educado e direto.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Ajuda com finanças e investimentos</strong>
+                        <p class="texto-exemplo">Exemplos: organizar um orçamento mensal, explicar opções de investimento em linguagem simples, simular cenários (risco vs retorno).</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Explique em linguagem simples a diferença entre CDB, Tesouro Direto e ações.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Criação e edição de imagens e layouts</strong>
+                        <p class="texto-exemplo">Exemplos: melhorar qualidade de imagem, remover texto de uma foto, gerar layout de post para redes sociais ou cartazes.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Gerar um layout de cartaz A4 para evento comunitário com título 'evento beneficente' e cores 'azul e amarelo'.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Geração de textos práticos</strong>
+                        <p class="texto-exemplo">Exemplos: contratos simples, cartas oficiais, recibos, roteiros curtos para vídeos; tudo adaptado ao seu tom e ao público.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Gere um recibo simples para prestação de serviço com campos: nome, serviço, valor, data.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Planejamento de viagens e roteiros</strong>
+                        <p class="texto-exemplo">Exemplos: criar itinerários por dia, estimar custos, sugerir pontos turísticos com acessibilidade.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Monte um roteiro de 3 dias em Porto Seguro com transporte público e atrativos para idosos.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Assistência em saúde e bem-estar (informativa)</strong>
+                        <p class="texto-exemplo">Exemplos: explicar sintomas de forma simples, sugerir perguntas para levar ao médico.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Explique de forma simples o que significa pressão arterial alta e quais perguntas devo fazer ao médico.”</p>
+                        <p class="aviso-importante"><em>Importante:</em> IA não substitui diagnóstico médico. Use como complemento e consulte profissionais.</p>
+                    </li>
+
+                    <li>
+                        <strong>Aprendizado e tutorial personalizada</strong>
+                        <p class="texto-exemplo">Exemplos: ensinar conceitos (história, matemática) com exemplos fáceis, criar exercícios para preparação em concurso público e corrigir respostas.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Explique o básico de juros simples em 3 exemplos práticos.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Transcrição e organização de áudio</strong>
+                        <p class="texto-exemplo">Exemplos: transformar gravações em texto, criar atas de reunião a partir da transcrição.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Transcreva este áudio e gere um resumo com os 5 principais pontos.”</p>
+                    </li>
+
+                    <li>
+                        <strong>Automação de tarefas simples</strong>
+                        <p class="texto-exemplo">Exemplos: preparar textos recorrentes, organizar informações, criar um programa de computador para realizar determinada tarefa.</p>
+                        <em class="prompt-exemplo-titulo">Prompt exemplo:</em> <p class="prompt-exemplo-paragrafo">“Crie um programa de computador que automatize o envio de e-mails semanais.”</p>
+                    </li>
+                </ul>
+
+                <p class="dica-final">
+                    <em>Dica prática:</em> para começar sem risco, experimente com tarefas não sensíveis (formatar texto, ideias, rascunhos). Conforme se sentir confortável, avance para documentos e automações mais importantes.
+                </p>
+                <p>
+                    A IA é uma ferramenta poderosa que pode facilitar muito o seu dia a dia, tornando tarefas repetitivas mais rápidas e eficientes. O importante é lembrar que ela é uma assistente, não um substituto. Sempre verifique as informações e use o bom senso!
+                </p>
+            </div>
+        </section>
+
+        <!-- Tópico 3: Uso Profissional -->
+        <section id="topico3" class="full-page">
         <div class="container sub-topico-content">
-            <h1>5. Ferramentas para Começar a Usar Hoje</h1>
-            <p>O mundo da IA é vasto, mas você não precisa conhecer tudo. Aqui estão algumas das ferramentas mais populares e acessíveis (muitas com versões gratuitas) para você começar a explorar:</p>
+            <h1>3. A IA no Trabalho: Muito Além da Automação</h1>
+            <p>
+                A Inteligência Artificial não veio para substituir profissionais, mas para ampliar nosso potencial. 
+                Ela funciona como uma assistente incansável, pronta para agilizar tarefas repetitivas, liberar tempo 
+                e até abrir novos caminhos criativos.
+            </p>
             
-            <h2>Para Conversar e Criar Textos:</h2>
+            <h2>Onde a IA já faz diferença:</h2>
             <ul>
-                <li><strong>ChatGPT (da OpenAI):</strong> Um dos mais famosos. Ótimo para tirar dúvidas, escrever textos, resumir artigos e muito mais.</li>
-                <li><strong>Gemini (do Google):</strong> Integrado ao ecossistema Google, é excelente para pesquisas, planejamento e geração de ideias.</li>
+                <li><strong>Início de projetos:</strong> debate de ideias com a IA pode acelerar o brainstorm e ajudar a estruturar um plano inicial.</li>
+                <li><strong>Planilhas e relatórios:</strong> organização, análise de dados e criação de fórmulas complexas em segundos.</li>
+                <li><strong>Design e comunicação:</strong> apoio em layouts, cartazes, convites, posts e apresentações mais profissionais.</li>
+                <li><strong>Documentação:</strong> criação de textos técnicos, resumos e padronização de materiais.</li>
+                <li><strong>Interpretação de textos e leis:</strong> leitura rápida de documentos extensos e auxílio em interpretações iniciais.</li>
+                <li><strong>Suporte em reuniões:</strong> registrar atas automáticas ou até sugerir pautas.</li>
             </ul>
 
-            <h2>Para Criar Imagens:</h2>
-            <ul>
-                <li><strong>Microsoft Designer (Image Creator):</strong> Fácil de usar e integrado ao Bing, permite criar imagens a partir de descrições em texto.</li>
-                <li><strong>Midjourney:</strong> Gera imagens de altíssima qualidade e realismo, ideal para quem busca resultados mais artísticos (funciona dentro do app Discord).</li>
-            </ul>
-            <p><strong>A melhor dica é:</strong> seja curioso! Experimente, faça perguntas bobas, peça para ele criar uma poesia sobre o seu café da manhã. É brincando que se aprende.</p>
+            <h2>Para pensar:</h2>
+            <p>
+                Como usar a IA de forma ética e responsável no seu dia a dia?  
+                Ela pode acelerar tarefas e ampliar a produtividade, mas decisões estratégicas 
+                continuam precisando da experiência e do julgamento humano.
+            </p>
         </div>
     </section>
 
-    <!-- Tópico 6: O Futuro -->
-    <section id="topico6" class="full-page">
-        <div class="container sub-topico-content">
-            <h1>6. O Futuro é Agora: O que esperar da IA?</h1>
-            <p>A Inteligência Artificial está evoluindo rapidamente e vai transformar ainda mais nossas vidas e trabalhos. Mas não há motivo para ter medo. Pense na chegada da internet ou dos celulares: foram grandes mudanças que trouxeram desafios, mas também oportunidades incríveis.</p>
+        <!-- Tópico 4: Prompts -->
+        <section id="topico4" class="full-page">
+            <div class="container sub-topico-content">
+                <h1>4. Como "Conversar" com a IA (A Arte do Prompt)</h1>
 
-            <h2>Reflexões Importantes:</h2>
-            <ul>
-                <li><strong>Aprendizado Contínuo:</strong> A habilidade mais importante será a nossa capacidade de aprender coisas novas e nos adaptar.</li>
-                <li><strong>Ética e Responsabilidade:</strong> Como sociedade, precisamos discutir como usar a IA de forma justa, transparente e que beneficie a todos.</li>
-                <li><strong>O Fator Humano:</strong> Criatividade, pensamento crítico, empatia e inteligência emocional são qualidades humanas que nenhuma máquina pode replicar. Elas se tornarão ainda mais valiosas.</li>
-            </ul>
-            <p>Parabéns por dar o primeiro passo! Entender o que é IA é a melhor forma de se preparar e aproveitar as oportunidades que ela oferece. O futuro não é algo que assistimos acontecer, mas algo que ajudamos a construir.</p>
-        </div>
-    </section>
+                <p>O "prompt" é simplesmente o comando ou a pergunta que você faz para a IA. Quanto melhor o seu pedido, melhor será a resposta. É como pedir um café: se você só disser "quero um café", pode receber qualquer coisa. Mas se disser "quero um café expresso, curto e sem açúcar", a chance de receber exatamente o que você quer é muito maior.</p>
 
-     <script src="./scripts/api_IA.js" type="module"></script>
+                <h2>Dicas para Criar Bons Prompts:</h2>
+                <ul>
+                    <li><strong>Seja Específico:</strong>
+                        - <em>Ruim:</em> "Fale sobre marketing."
+                        - <em>Bom:</em> "Crie 5 dicas de marketing digital para uma pequena floricultura que quer aumentar suas vendas online."
+                    </li>
+                    <li><strong>Dê um Contexto:</strong>
+                        - <em>Ruim:</em> "Escreva um e-mail."
+                        - <em>Bom:</em> "Escreva um e-mail profissional e amigável para um cliente, agradecendo pela parceria no último ano e desejando boas festas."
+                    </li>
+                    <li><strong>Defina o Formato:</strong>
+                        - Peça para a IA responder em formato de lista, tabela, parágrafos, etc. "Liste os prós e contras...", "Crie uma tabela comparando..."
+                    </li>
+
+                    <strong>Exemplo de Prompt Completo:</strong>
+                    <p>
+                    "Crie <strong>5 ideias de postagens para Instagram</strong> 
+                    (formato: lista com título e descrição curta), 
+                    para uma <strong>loja de roupas femininas</strong> 
+                    que está promovendo sua coleção de inverno, 
+                    focando em atrair <strong>mulheres de 30 a 50 anos</strong> 
+                    que buscam estilo e conforto."
+                    </p>
+                </ul>
+                    
+            </div>
+        </section>
+
+        <!-- Tópico 5: O Futuro -->
+        <section id="topico5" class="full-page">
+            <div class="container sub-topico-content">
+                <h1>5. O Futuro é Agora: O que esperar da IA?</h1>
+                <p>A Inteligência Artificial está evoluindo rapidamente e vai transformar ainda mais nossas vidas e trabalhos. Mas não há motivo para ter medo. Pense na chegada da internet ou dos celulares: foram grandes mudanças que trouxeram desafios, mas também oportunidades incríveis.</p>
+
+                <h2>Reflexões Importantes:</h2>
+                <ul>
+                    <li><strong>Aprendizado Contínuo:</strong> A habilidade mais importante será a nossa capacidade de aprender coisas novas e nos adaptar.</li>
+                    <li><strong>Ética e Responsabilidade:</strong> Como sociedade, precisamos discutir como usar a IA de forma justa, transparente e que beneficie a todos.</li>
+                    <li><strong>O Fator Humano:</strong> Criatividade, pensamento crítico, empatia e inteligência emocional são qualidades humanas que nenhuma máquina pode replicar. Elas se tornarão ainda mais valiosas.</li>
+                </ul>
+                <p>Parabéns por dar o primeiro passo! Entender o que é IA é a melhor forma de se preparar e aproveitar as oportunidades que ela oferece. O futuro não é algo que assistimos acontecer, mas algo que ajudamos a construir.</p>
+            </div>
+        </section>
+
+        <section id="topico6" class="full-page">
+            <div class="container sub-topico-content" style="align-items: center;">
+                <h1>6. Teste Prático: Converse com a IA</h1>
+                <h2>Agora é hora de botar em prática!</h2> 
+                <p> Criamos uma área de conversa com inteligência artificial para você testar seus conhecimentos de forma interativa e divertida.
+                Explore à vontade, sem custo algum, clicando no botão abaixo!</p>
+                <div class="subcontainer">
+                    <button onclick="window.location.href='./pages/IA-chat.html'" class="btn-chat">Iniciar Chat</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tópico 7: Ferramentas -->
+        <section id="topico7" class="full-page">
+            <div class="container sub-topico-content">
+                <h1>7. Ferramentas para Começar a Usar Hoje</h1>
+                <p>O mundo da IA é vasto, mas você não precisa conhecer tudo. Aqui estão algumas das ferramentas mais populares e acessíveis (muitas com versões gratuitas) para você começar a explorar:</p>
+                
+                <h2>Para Conversar e Criar Textos:</h2>
+                <ul>
+                    <li>
+                        <strong>ChatGPT (APP/WEB):</strong> Um dos mais conhecidos e utilizados mundialmente. 
+                        É rápido, intuitivo e capaz de gerar respostas detalhadas e complexas em poucos segundos. 
+                        No celular, oferece uma experiência de conversa fluida e natural, quase como falar com uma pessoa. 
+                        Um de seus grandes diferenciais é a possibilidade de salvar preferências e personalizar o uso, tornando-se uma ferramenta versátil para diferentes perfis de usuário.
+                        <p>Acesse em:
+                            <strong><a href="https://chat.openai.com/" class="links" target="_blank">https://chat.openai.com/</a></strong></p>
+                    </li>
+                    <li>
+                        <strong>Copilot (APP/WEB/WINDOWS):</strong> Integrado diretamente no Windows e nos pacotes do Microsoft 365, o Copilot é uma opção prática, 
+                        especialmente para quem já utiliza as ferramentas da Microsoft no dia a dia. 
+                        Ele se destaca em ambientes empresariais por facilitar tarefas em Word, Excel, Outlook e outros aplicativos. 
+                        Além disso, pode ser adaptado a necessidades específicas através do <em>Copilot Studio</em>, 
+                        oferecendo um bom equilíbrio entre produtividade e criatividade.
+                        <p>Acesse em: 
+                            <strong><a href="https://copilot.microsoft.com/" class="links" target="_blank">https://copilot.microsoft.com/</a></strong>
+                        </p>
+                    </li>
+                    <li><strong>DeepSeek (APP/WEB):</strong> 
+                        Uma IA desenvolvida na China que ganhou bastante notoriedade recentemente. 
+                        É vista como uma alternativa viável ao ChatGPT, oferecendo respostas muitas vezes mais curtas, objetivas e diretas. 
+                        Apesar de não ter o mesmo nível de personalização, surpreende em algumas análises e na clareza de suas respostas. 
+                        Como em qualquer IA, é recomendável não compartilhar dados pessoais, sendo este ponto ainda mais discutido em relação à privacidade e segurança no DeepSeek.
+                        <p>Acesse em: 
+                            <strong><a href="https://chat.deepseek.com/" class="links" target="_blank">https://chat.deepseek.com/</a></strong>
+                        </p></li>
+                    <li>
+                        <strong>Gemini (APP/WEB/API):</strong> Criado pelo Google, o Gemini pode ser usado no Android em substituição ao Google Assistente, integrando-se facilmente ao ecossistema da empresa. 
+                        Para usuários avançados e programadores, sua principal vantagem é o acesso ao <em>Google AI Studio</em>, 
+                        que permite criar projetos com uso de APIs de forma gratuita em pequenos testes, além de ser ótima em visualizar imagens e documentos.
+                        Isso faz do Gemini uma ferramenta poderosa tanto para o uso cotidiano quanto para aplicações técnicas mais específicas.
+                        <p>Acesse em: 
+                            <strong><a href="https://aistudio.google.com/" class="links" target="_blank">https://aistudio.google.com/</a></strong>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="topico8" class="full-page">
+            <footer class="rodape">
+                <p>Projeto de Extensão - Centro Universitário Cidade Verde - 2025</p>
+                <p>Ícones do CHAT IA criados por <a class="links" href="https://www.flaticon.com/br/icones-gratis/inteligencia-artificial" title="inteligência artificial ícones">Ayub Irawan - Flaticon</a></p>
+                <p>Gostou do site? Código fonte disponível no <a class="links" href="https://github.com/Rick-Caetano/IA_Descomplicada" target="_blank">GitHub</a></p>
+                <p>Motor de IA usado: <a class="links" href="https://aistudio.google.com/apikey" title="API GEMINI">Gemini-2.0-flash</a></p>
+
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icones" fill="currentColor">
+                        <path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z"/></svg>
+                    <a class="links" href="https://www.instagram.com/rickCaetano/" title="Instagram Henrique Caetano">instagram</a> | <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icones" fill="currentColor"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M512 96L127.9 96C110.3 96 96 110.5 96 128.3L96 511.7C96 529.5 110.3 544 127.9 544L512 544C529.6 544 544 529.5 544 511.7L544 128.3C544 110.5 529.6 96 512 96zM231.4 480L165 480L165 266.2L231.5 266.2L231.5 480L231.4 480zM198.2 160C219.5 160 236.7 177.2 236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160zM480.3 480L413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480z"/></svg>
+                    <a class="links" href="https://www.linkedin.com/in/henrique-caetano-168ab3383/" title="linkedin">
+                        linkedin
+                    </a>
+                    </p>
+                    <p><img src="./assets/images/pessoal.jpg" alt="Imagem do desenvolvedor Henrique Caetano" class="img-footer"></p>
+                </svg>
+            </footer>
+        </section>
+
+    </main>
+
+     <div class="creditos">
+        <p>Criado por: <a href="https://www.linkedin.com/in/henrique-caetano-168ab3383/" class="links" target="_blank">Henrique Caetano</a></p>
+    </div>
+
+    <script src="./scripts/index_functions.js"></script>
 </body>
 </html>

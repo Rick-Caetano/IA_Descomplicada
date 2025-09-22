@@ -5,17 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 :root {
-    /* NOVA PALETA DE CORES - Mais sóbria e profissional */
+    /* PALETA DE CORES */
     --cor-fundo: #0B192F;         /* Azul noturno */
     --cor-texto: #CCD6F6;         /* Cinza claro azulado */
     --cor-primaria: #FFFFFF;       /* Branco para destaque */
     --cor-secundaria: #8892B0;     /* Cinza suave */
     --cor-acento: #64FFDA;         /* Verde-água claro (menta) */
     --cor-acento-hover: rgba(100, 255, 218, 0.1); /* Fundo do botão no hover */
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -25,49 +21,57 @@ body {
     font-size: 1.2rem;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    overflow: hidden; /* IMPEDE A ROLAGEM NO BODY */
+}
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Ativa o scroll snap vertical */
+    scroll-behavior: smooth; /* Adicione de volta o comportamento suave para os cliques */
 }
 
 /* ============================================== */
 /* ESTILOS DA PÁGINA PRINCIPAL (INDEX.HTML)       */
 /* ============================================== */
 
-.full-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+#capa .logo {
+    height: 15%;
+    width: 15%;
 }
 
-.container {
-    max-width: 900px;
-    padding: 2rem;
-}
-
-#capa .logo-code {
-    font-size: 4rem;
-    color: var(--cor-acento); /* Alterado para a cor de acento */
-    text-shadow: none; /* Removido o brilho excessivo */
+@media screen and (max-width: 768px) {
+    #capa .logo {
+        height: 30%;
+        width: 30%;
+    }
 }
 
 #capa h1 {
     font-size: 3.5rem;
-    color: var(--cor-primaria); /* Alterado para a cor primária (branco) */
-    text-shadow: none; /* Removido o brilho para melhor legibilidade */
+    color: var(--cor-primaria); 
+    text-shadow: none;
     margin: 0.5rem 0;
     text-transform: uppercase;
 }
 
-#capa .code-line {
+@media screen and (max-width: 768px) {
+    #capa h1 {
+        font-size: 2.5rem; 
+    }
+}
+
+#capa .texto-descritivo {
     font-size: 1.5rem;
-    color: var(--cor-secundaria); /* Usando a cor secundária para texto de apoio */
+    color: var(--cor-secundaria); 
 }
 
-#capa .aprender {
-    color: var(--cor-acento); /* Destaque com a cor de acento */
+#capa .destaque {
+    color: var(--cor-acento);
 }
 
-#capa .tech-list {
+#capa .subtitulo {
     color: var(--cor-texto);
     letter-spacing: 2px;
 }
@@ -84,15 +88,101 @@ body {
     transition: all 0.3s ease;
 }
 
-.btn-iniciar:hover {
+.btn-topico {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--cor-acento); /* Borda mais sutil */
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    color: var(--cor-acento);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 500px) {
+    .btn-topico {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        overflow: hidden;
+    }
+}
+
+.btn-iniciar:hover, .btn-topico:hover {
     background-color: var(--cor-acento-hover); /* Efeito de hover mais suave */
     color: var(--cor-acento);
+}
+
+#barra-topo {
+    /* Posicionamento Fixo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background-color: rgba(11, 25, 47, 0.85); /* Cor de fundo com transparência */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+    
+    visibility: hidden; /* Começa completamente invisível e não clicável */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    #barra-topo {
+        justify-content: normal;
+    }
+}
+
+/* Classe que o JS vai adicionar para mostrar a barra */
+#barra-topo.visivel {
+    visibility: visible; /* Torna o elemento visível e clicável */
+    opacity: 1; /* Torna o elemento totalmente opaco (efeito de fade-in) */
 }
 
 #menu h2 {
     font-size: 2.5rem;
     color: var(--cor-primaria);
     margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    #menu h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ============================================== */
+/* ESTILOS DOS TÓPICOS                            */
+/* ============================================== */
+
+
+.full-page {
+    min-height: 100vh;
+    min-height: 100dvh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%; 
+    scroll-snap-align: start;
+}
+
+.container {
+    max-width: 900px;
+    padding: 2rem;
 }
 
 .menu-principal ul {
@@ -112,122 +202,458 @@ body {
     padding: 0.5rem;
 }
 
+@media screen and (max-width: 768px) {
+    .menu-principal a {
+        font-size: 1.4rem;
+    }
+}
+
 .menu-principal a:hover {
-    color: var(--cor-acento); /* Hover com a cor de acento */
+    color: var(--cor-acento); 
     text-shadow: none;
+}
+
+.sub-topico-content {
+    max-width: 800px;
+    padding: 2rem;
+    text-align: left;
+}
+
+.sub-topico-content h1 {
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    border-bottom: 1px solid var(--cor-secundaria); 
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .sub-topico-content h1 {
+        font-size: 2.3rem; /* Reduz de 3rem para um tamanho mais amigável */
+        margin-bottom: 30px; /* Reduz um pouco a margem inferior */
+    }
+}
+
+.sub-topico-content h2 {
+    font-size: 2rem;
+    color: var(--cor-acento); 
+}
+
+/* Estiliza a lista de exemplos no Tópico 2 */
+.sub-topico-content ul {
+    list-style: none; /* Remove os marcadores padrão da lista */
+    padding-left: 0;
+}
+
+.sub-topico-content li {
+    margin-bottom: 2.5rem; 
+    line-height: 1.6; /* Aumenta o espaço entre as linhas do texto */
+}
+
+/* Deixa o título de cada item da lista mais destacado */
+.sub-topico-content li strong {
+    color: var(--cor-primaria);
+    font-size: 1.4rem;
+    display: block; /* Faz com que o título ocupe sua própria linha */
+    margin-bottom: 0.5rem;
+}
+
+.texto-exemplo {
+    color: var(--cor-secundaria);
+    margin: 0.5rem 0;
+}
+
+.prompt-exemplo-titulo{
+    margin-top: 0.75rem; 
+    color: var(--cor-primaria);
+    font-weight: bold;
+    font-style: normal; 
+}
+
+.prompt-exemplo-paragrafo{
+    color: var(--cor-acento); 
+    font-family: 'Share Tech Mono', monospace; 
+    font-style: normal; /* Remove o itálico padrão, a cor e a fonte já são destaque suficiente */
+    font-size: 1.0rem;
+    display: block; /* Garante que o prompt ocupe uma linha própria */
+    font-weight: bold;
+    background-color:#1f1f1f; 
+    border-radius: 8px; 
+    padding: 15px;
+}
+
+.aviso-importante, .dica-final {
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    margin-top: 1rem;
+}
+
+.btn-chat {
+    background-color: var(--cor-acento-hover);
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--cor-acento); /* Borda sutil */
+    border-radius: 4px; 
+    color: var(--cor-acento);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-chat:hover {
+    background-color: var(--cor-acento); /* Efeito de hover mais suave */
+    color: var(--cor-fundo);
+}
+
+
+.links{
+    font-size: 1rem;
+    color: #8ab4f8;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.links:hover {
+    text-decoration: underline;
+    color: #4f73ac;
+}
+
+/* ============================================== */
+/*          RODAPÉ FIXO (FOOTER)                  */
+/* ============================================== */
+
+.creditos {
+    /* Posicionamento Fixo */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de todo o conteúdo */
+
+    /* Estilo e Aparência */
+    background-color: rgba(11, 25, 47, 0.85); /* A cor de fundo principal, mas com um pouco de transparência */
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco para navegadores modernos */
+    -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
+    padding: 8px 0; /* Espaçamento vertical pequeno */
+    text-align: center;
+    border-top: 1px solid rgba(136, 146, 176, 0.2); /* Linha sutil de separação */
+}
+
+.creditos p {
+    margin: 0;
+    font-size: 0.9rem; /* Tamanho da fonte pequeno e discreto */
+    color: var(--cor-secundaria); /* Cor de texto suave */
+    letter-spacing: 0.5px;
+}
+
+.rodape { 
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.rodape p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #bdc1c6;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icones {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle; 
+    color: rgb(183, 87, 246);
+}
+
+.img-footer {
+    margin-top: 10px;
+    width: 10%;  
+    height: 10%;  
+    object-fit: cover; 
+    border-radius: 50%; 
+}
+
+@media screen and (max-width: 768px) {
+    .img-footer {
+        width: 20%;  
+        height: 20%;  
+}
 }
 
 /* ================================== */
 /*          ESTILOS DO CHAT IA        */
 /* ================================== */
 
-.chat-container {
+body.pagina-chat {
+    background-color: #202124; 
+    overflow: hidden; /* Garante que não haja scroll na página inteira */
+}
+
+#master-container {
     display: flex;
     flex-direction: column;
-    height: 80vh; /* Ocupa 80% da altura da tela */
-    max-height: 700px;
+    height: calc(var(--vh, 1vh) * 100);
+    background-color: #202124;
+    overflow: hidden;
+}
+
+#barra-topo-chat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #3c4043;
+    flex-shrink: 0; /* Não encolhe */
+    transition: all 0.5s ease;
+    opacity: 1;
+    max-height: 100px;
+}
+
+/* Estado inicial escondido */
+#barra-topo-chat.escondido {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    overflow: hidden;
+
+}
+
+#barra-topo-chat .logo-chat {
+    width: 28px;
+    height: 28px;
+}
+
+#barra-topo-chat span {
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#cabeçalho-chat {
+    transition: opacity 0.3s ease, max-height 0.5s ease, padding 0.5s ease; /* sumir suavemente */
+    opacity: 1;
+    max-height: 300px; /* Altura suficiente para o conteúdo */
+    overflow: hidden;
+}
+
+#cabeçalho-chat.escondido {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+}
+
+#cabeçalho-chat h2 {
+    text-align: center;
+    color: #e8eaed;
+    margin: 0;
+    font-size: 2.5rem;
+    margin-top: 10px;
+}
+
+#cabeçalho-chat .subtitle {
+    font-size: 1rem;
+    color: #bdc1c6;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+}
+
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #64FFDA; 
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+section#chat-ia {
+    /* Esta seção se torna apenas um wrapper simples */
     width: 100%;
-    max-width: 800px;
-    margin: auto;
-    background-color: #2e2e33;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    overflow: hidden; /* Garante que os cantos arredondados sejam mantidos */
 }
 
-.chat-container h2 {
-    text-align: center;
-    color: #e0e0e0;
-    padding-top: 20px;
-    margin-bottom: 5px;
+section#chat-ia h2{
+    font-size: 3.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
 }
 
-.chat-container .subtitle {
-    font-size: 0.9rem;
-    color: #a0a0a0;
-    text-align: center;
-    margin: 0 20px 20px 20px;
+.dicas {
+    font-size: 1.2rem;
+    color: purple;
+    font-family: 'Share Tech Mono', monospace; /* Fonte monoespaçada para dicas */
+    max-width: 120px;
+}
+
+.cursor-piscando::after {
+  content: "|"; /* Símbolo do cursor */
+  margin-left: 4px;
+  animation: blink 1s steps(1) infinite;
+  color: #333; 
+}
+
+/* Animação do cursor piscando */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+body.pagina-chat {
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none; 
+    /* DEFINE A ALTURA PARA OCUPAR A TELA INTEIRA DE FORMA ROBUSTA */
+    height: 100vh;
+    height: 100dvh;
+    height: calc(var(--vh, 1dvh) * 100);
+    overflow: hidden;
 }
 
 #chat-box {
-    flex-grow: 1; /* Faz a caixa de chat ocupar o espaço disponível */
-    overflow-y: auto; /* Adiciona scroll quando o conteúdo passar da altura */
-    padding: 20px;
+     flex-grow: 1;
+    overflow-y: auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço entre as mensagens */
-    scrollbar-width: thin;
-    scrollbar-color: #555 #333;
+    padding: 16px;
+    gap: 16px; /* Espaço entre os balões de mensagem */
 }
 
-/* Estilo das mensagens */
-.message {
-    padding: 12px 18px;
-    border-radius: 18px;
-    max-width: 75%;
-    line-height: 1.5;
-}
 
-.message p {
+.chat-container h2{
+    text-align: center;
+    color: #e8eaed;
+    padding: 24px 20px 0px 20px;
     margin: 0;
-    white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+    font-size: 1.3rem;
+} 
+
+.chat-container .subtitle {
+    height: 120px; 
+    font-size: 1rem;
+    color: #bdc1c6;
+    text-align: center;
+    margin: 0 24px 24px 24px;
+    line-height: 1.4;
+    flex-wrap: nowrap;
+    max-height: 120px; /* Limita a altura para evitar que o texto ultrapasse o container */
 }
 
-/* Mensagem da IA */
-.ai-message {
-    background-color: #40414f;
-    color: #ececf1;
-    align-self: flex-start; /* Alinha à esquerda */
-    border-bottom-left-radius: 4px;
-    border-radius: 12px;
-    font-size: 12px;
-    padding-left: 15px;
-    padding-right: 15px;
+body.pagina-chat section#chat-ia {
+    padding-top: 0;
+    height: 100vh; 
+    height: 100dvh;
+    justify-content: initial; /* Reseta o alinhamento vertical */
 }
 
-/* Mensagem do Usuário */
-.user-message {
-    background-color: #2a65a8;
-    color: #ffffff;
-    align-self: flex-end; /* Alinha à direita */
-    border-bottom-right-radius: 4px;
+.dicas {
+    font-size: 1rem;
+    color: #8ab4f8;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 600;
 }
 
-/* Barra de digitação */
+.escondido {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    overflow: hidden;
+}
+
+#chat-box > .mensagem_ia {
+    background-color: #3c4043;
+    color: #e8eaed;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px; 
+    padding: 12px 16px;
+    border-radius: 20px;
+    max-width: 80%;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-align: left;
+    width: fit-content;
+      /*
+        *   Se o texto for curto, `width: fit-content` fará o balão "encolher" para se ajustar ao texto.
+        *   Se o texto for longo, ele tentará se expandir. No entanto, a regra `max-width: 80%` atuará como um limite, forçando o texto a quebrar a linha e impedindo que o balão ocupe mais de 80% da largura do chat.
+    */
+}
+
+.mensagem_ia p, .mensagem_usuario p {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+#chat-box > .mensagem_usuario {
+    background-color: #8ab4f8;
+    color: #202124; 
+    align-self: flex-end;
+    border-bottom-right-radius: 4px; 
+    padding: 12px 16px;
+    border-radius: 20px;
+    max-width: 80%;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-align: left;
+    width: fit-content;
+}
+
 #input-area {
     display: flex;
-    padding: 15px;
-    border-top: 1px solid #444;
-    gap: 10px;
-    justify-content: center;
+    padding: 12px;
+    gap: 12px;
     align-items: center;
+    flex-shrink: 0; /* Não encolhe */
+    border-top: 1px solid #3c4043;
 }
 
 #input-usuario {
     flex-grow: 1;
-    background-color: #40414f;
-    border: 1px solid #555;
-    border-radius: 8px;
-    padding: 12px;
-    color: #fff;
+    background-color: #3c4043;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 20px;
+    color: #e8eaed;
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    resize: none; /* Impede que o usuário redimensione */
-    overflow-y: hidden; /* Esconde a barra de rolagem interna */
-    height: 48px; /* Altura inicial para uma linha */
+    font-size: 1.1rem;
+    resize: none;
+    overflow-y: hidden;
+    min-height: 52px;
+    line-height: 1.4;
 }
 
 #input-usuario:focus {
     outline: none;
-    border-color: #2a65a8;
 }
 
 #butao-enviar {
-    background-color: #2a65a8;
+    background-color: #8ab4f8;
     border: none;
-    border-radius: 8px;
-    width: 48px;
-    height: 48px;
+    border-radius: 50%; /* Botão redondo */
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,12 +661,57 @@ body {
     transition: background-color 0.2s;
 }
 
-#butao-enviar:hover {
-    background-color: #3c82d4;
+#butao-enviar svg {
+    stroke: #202124;
 }
 
-#butao-enviar svg {
-    stroke: #fff;
+#area_voltar_pagina {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#btn_voltar_index {
+    display: inline-block;
+    padding: 2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #A951EC, #3B82F6); /*Cria o gradiente*/
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+#btn_voltar_index span {
+    display: flex; /* O conteúdo interno container flex para não quebrar svg e texto */
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    background-color: #202124; 
+    padding: 12px 18px;
+    border-radius: 4px;
+    color: var(--cor-texto);
+    font-size: 0.9rem; 
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+#btn_voltar_index svg {
+    width: 18px;  
+    height: 18px; 
+    fill: currentColor; 
+}
+
+#btn_voltar_index:hover {
+    transform: translateY(-2px); /* Efeito de "levantar" o botão */
+    box-shadow: 0 4px 15px rgba(169, 81, 236, 0.3); /* Sombra suave com a cor do gradiente */
+}
+
+#btn_voltar_index:hover span {
+    background-color: transparent; 
+    color: white; /
 }
 
 /* Animação de "digitando" */
@@ -265,144 +736,71 @@ body {
     40% { transform: scale(1.0); }
 }
 
-/* ============================================== */
-/* ESTILOS DAS PÁGINAS DE TÓPICO                  */
-/* ============================================== */
+/* ====================================================== */
+/*          ESTILIZAÇÃO DA BARRA DE ROLAGEM (SCROLLBAR)   */
+/* ====================================================== */
 
-.pagina-topico {
-    overflow: hidden;
+#chat-box::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem. 8px é fino */
 }
 
-.container-topico {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+#chat-box::-webkit-scrollbar-track {
+    background: #202124; /* Cor de fundo da "trilha", a mesma do fundo do chat para um visual integrado. */
+    border-radius: 10px;
 }
 
-.sub-topico {
-    height: 100vh;
-    width: 100%;
-    scroll-snap-align: start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #4A4F54; 
+    border-radius: 10px; 
+    border: 2px solid #202124; 
 }
 
-.sub-topico-content {
-    max-width: 800px;
-    padding: 2rem;
-    text-align: left;
+#chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-secundaria); /* Ao passar o mouse, a barra fica mais clara para indicar interatividade. */
 }
 
-.sub-topico-content h1 {
-    font-size: 3rem;
-    color: var(--cor-primaria);
-    border-bottom: 1px solid var(--cor-secundaria); /* Borda mais suave */
-    padding-bottom: 10px;
-    margin-bottom: 40px;
+/* Para Firefox */
+#chat-box {
+  scrollbar-width: thin; /* Deixa a barra mais fina no Firefox. */
+  scrollbar-color: #4A4F54 #202124;
 }
 
-.sub-topico-content h2 {
-    font-size: 2rem;
-    color: var(--cor-acento); /* Títulos secundários com a cor de acento */
+/* ====================================================== */
+/*          ESTILOS PARA BLOCOS DE CÓDIGO (PRISM.JS)      */
+/* ====================================================== */
+
+/* Container do bloco de código */
+.bloco-de-codigo {
+    background-color: #1E1E1E; 
+    border-radius: 8px;
+    margin: 12px 0; /* Espaçamento vertical dentro do balão de mensagem */
+    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados ao conteúdo */
+    position: relative;
 }
 
-pre {
-    background-color: #112240; /* Tom de azul um pouco mais claro que o fundo */
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-}
-pre, code {
-    font-family: 'Fira Code', 'JetBrains Mono', Consolas, 'Courier New', monospace;
-    font-size: 1.1rem;
-    font-variant-ligatures: common-ligatures;
-    -webkit-font-variant-ligatures: common-ligatures;
+/* A tag <pre> que o Prism usa */
+.bloco-de-codigo pre {
+    margin: 0 !important; /* Remove qualquer margem padrão */
+    padding: 16px !important; /* Espaçamento interno */
+    border-radius: 0 !important;
+    background: none !important; /* Remove o fundo padrão */
+    white-space: pre-wrap;       /* Permite quebra de linha em texto longo */
+    word-wrap: break-word;       /* Garante que palavras longas quebrem */
 }
 
-/* ============================================== */
-/* COMPONENTES FLUTUANTES E NAVEGAÇÃO             */
-/* ============================================== */
-
-.logo-flutuante {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
+/* Adicionar o nome da linguagem (ex: "python") no canto */
+.bloco-de-codigo::before {
+    content: attr(data-linguagem);
+    position: absolute;
+    top: 0;
+    right: 12px;
+    padding: 2px 8px;
+    border-bottom-left-radius: 6px;
+    background-color: #8ab4f8;
+    color: #202124;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.logo-flutuante img {
-    height: 50px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
 
-.logo-flutuante:hover img {
-    opacity: 1;
-}
-
-.home-flutuante {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 100;
-    color: var(--cor-acento);
-    text-decoration: none;
-    font-size: 1.5rem;
-    border: 1px solid var(--cor-acento);
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
-.home-flutuante:hover {
-    background-color: var(--cor-acento-hover);
-}
-
-.navegacao-vertical {
-    position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-nav-vertical {
-    background: rgba(204, 214, 246, 0.1);
-    border: 1px solid var(--cor-secundaria);
-    color: var(--cor-secundaria);
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px 0;
-}
-
-.btn-nav-vertical:hover {
-    background: var(--cor-acento-hover);
-    color: var(--cor-acento);
-    border-color: var(--cor-acento);
-}
-
-.navegacao-paginas {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-}
-
-.btn-nav {
-    padding: 10px 20px;
-    border: 1px solid var(--cor-texto);
-    color: var(--cor-texto);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-radius: 4px;
-}
-
-.btn-nav:hover {
-    background-color: var(--cor-acento-hover);
-    color: var(--cor-acento);
-    border-color: var(--cor-acento);
-}
