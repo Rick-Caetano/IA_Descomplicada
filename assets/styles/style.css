@@ -126,6 +126,7 @@ body {
     
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     padding: 12px 24px;
     background-color: rgba(11, 25, 47, 0.85); /* Cor de fundo com transparência */
@@ -136,6 +137,12 @@ body {
     visibility: hidden; /* Começa completamente invisível e não clicável */
     opacity: 0;
     transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    #barra-topo {
+        justify-content: normal;
+    }
 }
 
 /* Classe que o JS vai adicionar para mostrar a barra */
@@ -372,6 +379,13 @@ body {
     height: 10%;  
     object-fit: cover; 
     border-radius: 50%; 
+}
+
+@media screen and (max-width: 768px) {
+    .img-footer {
+        width: 20%;  
+        height: 20%;  
+}
 }
 
 /* ================================== */
