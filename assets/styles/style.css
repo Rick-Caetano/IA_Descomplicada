@@ -703,7 +703,7 @@ body.pagina-chat section#chat-ia {
 #area_voltar_pagina {
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1.3rem;
 }
 
 #btn_voltar_index {
@@ -715,6 +715,8 @@ body.pagina-chat section#chat-ia {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    /*fundo transparente*/
+    background-color: transparent;
 }
 
 
