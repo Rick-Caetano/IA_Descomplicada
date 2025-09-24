@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       }
 
       let respostaGerada = await response.json();
-      respostaGerada = respostaGerada.text.trim(); // Remove espaços em branco no início e no final da resposta
+      respostaGerada = respostaGerada.text.trim();
       if (!respostaGerada || typeof respostaGerada !== "string") {
         adicionarMensagemTela("Desculpe, Ocorreu um erro ao processar sua solicitação.", "mensagem_ia"); //colocar mensagem de erro na tela
         throw new Error("Resposta inválida da API");
@@ -195,11 +195,11 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
       //console.log(respostaGerada); //debug
 
       trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
-      adicionarMensagemTela(prompt, "mensagem_usuario"); // Adiciona a mensagem do usuário
-      mostrarSpinner(); // Mostra o spinner enquanto aguarda a resposta da IA
-      await new Promise(resolve => setTimeout(resolve, 6000)); // Espera 6 segundos para simular processamento
+      adicionarMensagemTela(prompt, "mensagem_usuario"); 
+      mostrarSpinner(); 
+      await new Promise(resolve => setTimeout(resolve, 2000)); 
       removerSpinner(); // Remove o spinner após a espera
-      adicionarMensagemTela(respostaGerada, "mensagem_ia"); // Adiciona a resposta
+      adicionarMensagemTela(respostaGerada, "mensagem_ia"); 
 
     } catch (error) {
       console.error("Erro ao enviar para a IA:", error.message);
