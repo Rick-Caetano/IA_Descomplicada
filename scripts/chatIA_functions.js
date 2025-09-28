@@ -218,6 +218,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         }
       });
 
-  setInterval(trocaTextoDica, 5000); // Troca a dica a cada 5 segundos;
+  setInterval(trocaTextoDica, 7000); // Troca a dica a cada 7 segundos;
 
 });

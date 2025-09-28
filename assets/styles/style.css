@@ -345,6 +345,7 @@ body {
     padding-top: 56.25%; /* A MÁGICA: Proporção 16:9 (9 / 16 = 0.5625) */
     margin: 2rem 0; 
     border-radius: 8px; 
+    margin-bottom: 20px;
 }
 
 .video-container iframe {
@@ -354,11 +355,53 @@ body {
     width: 100%;
     height: 100%;
     border: none;
+    margin-bottom: 20px;
 }
 
 /* ============================================== */
 /*          RODAPÉ FIXO (FOOTER)                  */
 /* ============================================== */
+
+.btns-finais {
+     display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinha os botões na parte inferior, pois o center na flexbox não funciona como esperado */
+    gap: 1rem; /* Espaço entre os botões */
+    margin-top: 2rem;
+}
+
+.btn-whatsapp {
+    width: 60px;  
+    height: 60px; 
+    border-radius: 50%; /* Transforma o quadrado em um círculo perfeito */
+    
+    /* Layout interno para centralizar o ícone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+    background-color: transparent;
+    border: 1px solid var(--cor-acento); 
+    color: var(--cor-acento); 
+    
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0; /* Remove padding para não deformar o círculo */
+}
+
+.btn-whatsapp:hover {
+    background-color: var(--cor-acento-hover); 
+    transform: translateY(-2px); /* Efeito sutil de levantar */
+}
+
+
+.btn-whatsapp svg {
+    width: 28px; 
+    height: 28px;
+    fill: currentColor; 
+}
 
 .creditos {
     /* Posicionamento Fixo */
