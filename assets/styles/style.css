@@ -403,6 +403,33 @@ body {
     fill: currentColor; 
 }
 
+#btn-voltar::before {
+    content: "Voltar ao Topo";
+}
+
+@media screen and (max-width: 768px) {
+    #btn-voltar::before {
+        content: "↑";
+    }
+
+    #btn-voltar {
+        width: 60px;  
+        height: 60px; 
+        border-radius: 50%; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: 1px solid var(--cor-acento); 
+        color: var(--cor-acento); 
+        font-size: 2rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0; 
+    }
+}
+
 .creditos {
     /* Posicionamento Fixo */
     position: fixed;

@@ -175,6 +175,10 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       input.value = ""; // Limpa o campo de entrada após enviar a mensagem
 
+      trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
+      adicionarMensagemTela(prompt, "mensagem_usuario"); 
+      mostrarSpinner(); 
+
       const response = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -194,9 +198,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
       //console.log(respostaGerada); //debug
 
-      trocarCabecalho(); // Esconde o cabeçalho do chat na primeira interação
-      adicionarMensagemTela(prompt, "mensagem_usuario"); 
-      mostrarSpinner(); 
       await new Promise(resolve => setTimeout(resolve, 2000)); 
       removerSpinner(); // Remove o spinner após a espera
       adicionarMensagemTela(respostaGerada, "mensagem_ia"); 
