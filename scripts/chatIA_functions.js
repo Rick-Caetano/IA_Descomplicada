@@ -127,16 +127,13 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   function formatarScriptMensagem(texto) {
-    // Passo 1: Usamos um placeholder temporário e seguro para "proteger" o HTML do código
-    // da biblioteca 'marked'.
+    // Passo 1: Isolar os blocos de código com placeholders.
+    // Esta parte continua a mesma.
     const placeholders = [];
     let i = 0;
-    const textoComPlaceholders = texto.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, linguagem, codigo) => {
+    const textoComPlaceholders = texto.replace(/```(\w+)?\n([\sS]*?)```/g, (match, linguagem, codigo) => {
         const nomeLinguagem = linguagem || "markup";
-        
-        // IMPORTANTE: Escapamos o HTML DENTRO do código para o Prism.js funcionar corretamente.
         const codigoEscapado = codigo.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
         const blocoHtml = `<div class="bloco-de-codigo" data-linguagem="${nomeLinguagem}"><pre><code class="language-${nomeLinguagem}">${codigoEscapado.trim()}</code></pre></div>`;
         
         const placeholder = `__CODE_BLOCK_${i++}__`;
@@ -145,17 +142,22 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
         return placeholder;
     });
 
-    // Passo 2: Usar a biblioteca 'marked' para converter TODO O RESTO do Markdown
-    // (negrito, itálico, listas, etc.) para HTML.
-    // O 'marked' vai ignorar os placeholders.
+    // Passo 2: Usar 'marked' para converter o resto do Markdown.
+    // Esta parte continua a mesma.
     let htmlRestante = marked.parse(textoComPlaceholders, { gfm: true, breaks: true });
 
-    // Passo 3: Substituir os placeholders de volta pelos blocos de código HTML formatados.
+    // Passo 3: Substituir os placeholders de volta (A CORREÇÃO ESTÁ AQUI).
+    // Em vez de usar uma RegExp complexa, vamos simplesmente procurar pelo texto do placeholder
+    // no HTML gerado e substituí-lo. Esta abordagem é mais robusta.
     placeholders.forEach(p => {
-        // Usamos um parágrafo <p> ao redor do placeholder para garantir que o replace funcione
-        // mesmo que o 'marked' tenha envolvido ele em um <p>.
-        const regexPlaceholder = new RegExp(`<p>${p.placeholder}</p>|${p.placeholder}`);
+        // Encontra o parágrafo que CONTÉM o placeholder
+        const regexPlaceholder = new RegExp(`<p>.*${p.placeholder}.*</p>`);
         htmlRestante = htmlRestante.replace(regexPlaceholder, p.html);
+    });
+
+    // Passo 4: Limpeza final para o caso de algum placeholder não ter sido pego dentro de um <p>
+    placeholders.forEach(p => {
+        htmlRestante = htmlRestante.replace(p.placeholder, p.html);
     });
 
     return htmlRestante;
