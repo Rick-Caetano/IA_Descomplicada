@@ -127,31 +127,38 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
   }
 
   function formatarScriptMensagem(texto) {
-    const regexCodigo =/```(\w+)?\n([\s\S]*?)```/g // Regex para detectar blocos de código
+    // Passo 1: Usamos um placeholder temporário e seguro para "proteger" o HTML do código
+    // da biblioteca 'marked'.
+    const placeholders = [];
+    let i = 0;
+    const textoComPlaceholders = texto.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, linguagem, codigo) => {
+        const nomeLinguagem = linguagem || "markup";
+        
+        // IMPORTANTE: Escapamos o HTML DENTRO do código para o Prism.js funcionar corretamente.
+        const codigoEscapado = codigo.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    const textoFormatado = texto.replace(regexCodigo, (match, linguagem, codigo) => {
-      const nomeLinguagem = linguagem || "markup" // Se não houver linguagem, usa "markup"
-
-      const codigoFormatado = codigo.replace(/</g, "<").replace(/>/g, ">"); // Escapa os caracteres < e >
-
-      return `<div class="bloco-de-codigo"><pre><code class="language-${nomeLinguagem}">${codigoFormatado.trim()}</code></pre></div>`;
+        const blocoHtml = `<div class="bloco-de-codigo" data-linguagem="${nomeLinguagem}"><pre><code class="language-${nomeLinguagem}">${codigoEscapado.trim()}</code></pre></div>`;
+        
+        const placeholder = `__CODE_BLOCK_${i++}__`;
+        placeholders.push({ placeholder: placeholder, html: blocoHtml });
+        
+        return placeholder;
     });
 
-    // Se não houver blocos de código, retorna o texto normal
-    if (!textoFormatado.includes('div class="bloco-de-codigo"')) {
-      return `<p>${texto}</p>`; 
-    }
+    // Passo 2: Usar a biblioteca 'marked' para converter TODO O RESTO do Markdown
+    // (negrito, itálico, listas, etc.) para HTML.
+    // O 'marked' vai ignorar os placeholders.
+    let htmlRestante = marked.parse(textoComPlaceholders, { gfm: true, breaks: true });
 
-    //para texto misto, envolvemos o texto fora dos blocos em paragrafos
-    return textoFormatado.replace(/(^|<\/div>)([^<]*?)(<div class=|$)/g, (match, antes, textoSolto, depois) => {
-      const textoLimpo = textoSolto.trim();
-
-      if (textoLimpo) {
-        return `${antes}<p>${textoLimpo}</p>${depois}`; //retorna o texto misto
-      }
-
-      return `${antes}${depois}`; // Se não houver texto solto, apenas retorna o que estava antes e depois
+    // Passo 3: Substituir os placeholders de volta pelos blocos de código HTML formatados.
+    placeholders.forEach(p => {
+        // Usamos um parágrafo <p> ao redor do placeholder para garantir que o replace funcione
+        // mesmo que o 'marked' tenha envolvido ele em um <p>.
+        const regexPlaceholder = new RegExp(`<p>${p.placeholder}</p>|${p.placeholder}`);
+        htmlRestante = htmlRestante.replace(regexPlaceholder, p.html);
     });
+
+    return htmlRestante;
   }
 
   function trocarCabecalho() {

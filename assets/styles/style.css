@@ -225,6 +225,8 @@ body {
     border-bottom: 1px solid var(--cor-secundaria); 
     padding-bottom: 10px;
     margin-bottom: 40px;
+    
+    vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
@@ -232,6 +234,15 @@ body {
         font-size: 2.3rem; /* Reduz de 3rem para um tamanho mais amigável */
         margin-bottom: 30px; /* Reduz um pouco a margem inferior */
     }
+}
+
+.icone {
+    /* A propriedade chave: alinha o meio da imagem com o meio do texto. */
+    vertical-align: middle;
+
+    /* Ajuste fino: move a imagem um pouco para baixo para compensar a altura da linha. */
+    /* Este valor pode precisar de um pequeno ajuste dependendo da fonte. */
+    margin-bottom: 5px; 
 }
 
 .sub-topico-content h2 {
@@ -299,6 +310,8 @@ body {
     text-decoration: none;
     font-size: 1.5rem;
     transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -428,6 +441,18 @@ body {
         transition: all 0.3s ease;
         padding: 0; 
     }
+}
+
+.link-facul {
+    font-weight: bold;
+    text-decoration: none;
+    color: #536b2a; 
+    transition: color 0.3s ease;
+}
+
+.link-facul:hover {
+    color: #a4c639; 
+    text-decoration: underline;
 }
 
 .creditos {
