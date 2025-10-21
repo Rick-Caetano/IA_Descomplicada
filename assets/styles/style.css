@@ -141,7 +141,7 @@ body {
 
 @media screen and (max-width: 768px) {
     #barra-topo {
-        justify-content: normal;
+        padding: 12px;
     }
 }
 
