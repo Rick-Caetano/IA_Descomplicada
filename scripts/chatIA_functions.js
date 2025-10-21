@@ -128,7 +128,6 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
 
   function formatarScriptMensagem(texto) {
     // Passo 1: Isolar os blocos de código com placeholders.
-    // Esta parte continua a mesma.
     const placeholders = [];
     let i = 0;
     const textoComPlaceholders = texto.replace(/```(\w+)?\n([\sS]*?)```/g, (match, linguagem, codigo) => {
@@ -143,14 +142,12 @@ document.addEventListener("DOMContentLoaded", (event) => { //Espera o DOM carreg
     });
 
     // Passo 2: Usar 'marked' para converter o resto do Markdown.
-    // Esta parte continua a mesma.
     let htmlRestante = marked.parse(textoComPlaceholders, { gfm: true, breaks: true });
 
-    // Passo 3: Substituir os placeholders de volta (A CORREÇÃO ESTÁ AQUI).
-    // Em vez de usar uma RegExp complexa, vamos simplesmente procurar pelo texto do placeholder
-    // no HTML gerado e substituí-lo. Esta abordagem é mais robusta.
+    // Passo 3: Substituir os placeholders de volta 
+    // Em vez de usar uma RegExp complexa, vamos simplesmente procurar pelo texto do placeholder no HTML gerado e substituí-lo. Esta abordagem é mais robusta.
     placeholders.forEach(p => {
-        // Encontra o parágrafo que CONTÉM o placeholder
+        // Encontra o parágrafo que contém o placeholder
         const regexPlaceholder = new RegExp(`<p>.*${p.placeholder}.*</p>`);
         htmlRestante = htmlRestante.replace(regexPlaceholder, p.html);
     });
