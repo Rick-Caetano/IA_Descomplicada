@@ -39,6 +39,17 @@ Pergunta: ${message}
 
   } catch (error) {
 
+  console.error("Erro webhook:", error);
+
+  return res.status(500).json({
+    reply: error.message || JSON.stringify(error)
+  });
+
+}
+
+  /*
+  } catch (error) {
+
     console.error("Erro webhook:", error);
 
     return res.status(500).json({
@@ -46,5 +57,5 @@ Pergunta: ${message}
     });
 
   }
-
+ */
 }
