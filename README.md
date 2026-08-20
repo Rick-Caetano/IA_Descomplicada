@@ -26,16 +26,6 @@ assets/                  Imagens e estilos
 api/gemini.js            Função serverless que fala com a IA
 ```
 
-## Configuração
-
-A função serverless em `api/gemini.js` depende de uma variável de ambiente:
-
-```
-GROQ_API_KEY=<sua chave da Groq>
-```
-
-Ela já está configurada como secret no projeto na Vercel (produção, preview e desenvolvimento).
-
 ## Hospedagem
 
-O site está publicado na [Vercel](https://vercel.com/).
+O site está publicado em [iadescomplicada.vercel.app](https://iadescomplicada.vercel.app/).
